@@ -10,11 +10,11 @@ void Swap(T &a, T &b)
 
 //-------------------------------------------------
 // This function generates a random array
-int* GenerateRandomData(int n)
+int *GenerateRandomData(int n)
 {
 	srand((unsigned int)time(NULL));
 
-	int* a = new int[n];
+	int *a = new int[n];
 	for (int i = 0; i < n; i++)
 	{
 		a[i] = rand() % n;
@@ -24,9 +24,9 @@ int* GenerateRandomData(int n)
 }
 
 // This function generates a sorted array (ascending order)
-int* GenerateSortedData(int n)
+int *GenerateSortedData(int n)
 {
-	int* a = new int[n];
+	int *a = new int[n];
 
 	for (int i = 0; i < n; i++)
 	{
@@ -37,9 +37,9 @@ int* GenerateSortedData(int n)
 }
 
 // This function generates a reverse-sorted array (descending order)
-int* GenerateReverseData(int n)
+int *GenerateReverseData(int n)
 {
-	int* a = new int[n];
+	int *a = new int[n];
 
 	for (int i = 0; i < n; i++)
 	{
@@ -50,9 +50,9 @@ int* GenerateReverseData(int n)
 }
 
 // This function generates a nearly-sorted array
-int* GenerateNearlySortedData(int n)
+int *GenerateNearlySortedData(int n)
 {
-	int* a = new int[n];
+	int *a = new int[n];
 
 	for (int i = 0; i < n; i++)
 	{
@@ -71,9 +71,9 @@ int* GenerateNearlySortedData(int n)
 	return a;
 }
 
-int* GenerateData(int n, int dataType)
+int *GenerateData(int n, int dataType)
 {
-	int* resArr;
+	int *resArr;
 	switch (dataType)
 	{
 	case 0:

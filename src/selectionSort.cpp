@@ -5,7 +5,7 @@
 #include <algorithm>
 using namespace std;
 
-SelectionSort::SelectionSort(int* arr, int n)
+SelectionSort::SelectionSort(int *arr, int n)
 {
     this->size = n;
     this->tempArr = new int[n];
@@ -54,10 +54,9 @@ double SelectionSort::sortWithRunningTimeCount()
         }
         swap(tempArr2[i], tempArr2[minIndex]);
     }
-    
+
     auto end = std::chrono::system_clock::now();
-    // runningTime = std::chrono::duration_cast<double, std::milli>(end - start).count();
-    runningTime = chrono::duration<double,milli>(end - start).count();
+    runningTime = chrono::duration<double, milli>(end - start).count();
     return runningTime;
 }
 double SelectionSort::getRunningTime()

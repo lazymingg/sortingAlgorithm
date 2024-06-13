@@ -1,11 +1,11 @@
-#ifndef selectionSort
-#define selectionSort
+#ifndef INSERTIONSORT_H
+#define INSERTIONSORT_H
 
-class SelectionSort
+class InsertionSort
 {
 public:
-    SelectionSort(int *arr, int n);
-    ~SelectionSort();
+    InsertionSort(int *arr, int n);
+    ~InsertionSort();
     int sortWithComparisonCount();
     double sortWithRunningTimeCount();
     int getComparison();

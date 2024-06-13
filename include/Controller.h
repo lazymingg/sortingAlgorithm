@@ -3,9 +3,11 @@
 #include <string>
 #include "../include/DataGenerator.h"
 #include "../include/selectionSort.h"
+#include "../include/InsertionSort.h"
 using namespace std;
 
-enum class SortingAlgorithm {
+enum class SortingAlgorithm
+{
     SELECTION_SORT,
     INSERTION_SORT,
     SHELL_SORT,
@@ -18,7 +20,8 @@ enum class SortingAlgorithm {
     NONE
 };
 
-enum class InputOrder {
+enum class InputOrder
+{
     RAND,
     NSORTED,
     SORTED,
@@ -26,14 +29,16 @@ enum class InputOrder {
     NONE
 };
 
-enum class OutputParameter {
+enum class OutputParameter
+{
     TIME,
     COMP,
     BOTH,
     NONE
 };
 
-class Controller {
+class Controller
+{
 private:
     SortingAlgorithm algorithmParam1 = SortingAlgorithm::NONE;
     SortingAlgorithm algorithmParam2 = SortingAlgorithm::NONE;
@@ -48,8 +53,9 @@ private:
     string fileName = "";
 
 public:
-    Controller(int argc, char* argv[]);
-    int* readFile();
+    Controller(int argc, char *argv[]);
+    ~Controller();
+    int *readFile();
     void run();
 };
 

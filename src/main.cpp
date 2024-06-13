@@ -1,6 +1,6 @@
 #include "../include/mode.h"
 using namespace std;
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     if (argc < 5)
     {

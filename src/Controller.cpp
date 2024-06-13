@@ -16,42 +16,67 @@ bool isDigit(char *str)
     }
     return true;
 }
-string sortingAlgorithmToString(SortingAlgorithm algo) {
-    switch (algo) {
-        case SortingAlgorithm::SELECTION_SORT: return "Selection Sort";
-        case SortingAlgorithm::INSERTION_SORT: return "Insertion Sort";
-        case SortingAlgorithm::SHELL_SORT: return "Shell Sort";
-        case SortingAlgorithm::BUBBLE_SORT: return "Bubble Sort";
-        case SortingAlgorithm::HEAP_SORT: return "Heap Sort";
-        case SortingAlgorithm::MERGE_SORT: return "Merge Sort";
-        case SortingAlgorithm::QUICK_SORT: return "Quick Sort";
-        case SortingAlgorithm::RADIX_SORT: return "Radix Sort";
-        case SortingAlgorithm::COUNTING_SORT: return "Counting Sort";
-        case SortingAlgorithm::NONE: return "None";
-        default: return "Unknown Algorithm";
+string sortingAlgorithmToString(SortingAlgorithm algo)
+{
+    switch (algo)
+    {
+    case SortingAlgorithm::SELECTION_SORT:
+        return "Selection Sort";
+    case SortingAlgorithm::INSERTION_SORT:
+        return "Insertion Sort";
+    case SortingAlgorithm::SHELL_SORT:
+        return "Shell Sort";
+    case SortingAlgorithm::BUBBLE_SORT:
+        return "Bubble Sort";
+    case SortingAlgorithm::HEAP_SORT:
+        return "Heap Sort";
+    case SortingAlgorithm::MERGE_SORT:
+        return "Merge Sort";
+    case SortingAlgorithm::QUICK_SORT:
+        return "Quick Sort";
+    case SortingAlgorithm::RADIX_SORT:
+        return "Radix Sort";
+    case SortingAlgorithm::COUNTING_SORT:
+        return "Counting Sort";
+    case SortingAlgorithm::NONE:
+        return "None";
+    default:
+        return "Unknown Algorithm";
     }
 }
 
-string inputOrderToString(InputOrder order) {
-    switch (order) {
-        case InputOrder::RAND: return "Random";
-        case InputOrder::NSORTED: return "Nearly Sorted";
-        case InputOrder::SORTED: return "Sorted";
-        case InputOrder::REV: return "Reversed";
-        case InputOrder::NONE: return "None";
+string inputOrderToString(InputOrder order)
+{
+    switch (order)
+    {
+    case InputOrder::RAND:
+        return "Random";
+    case InputOrder::NSORTED:
+        return "Nearly Sorted";
+    case InputOrder::SORTED:
+        return "Sorted";
+    case InputOrder::REV:
+        return "Reversed";
+    case InputOrder::NONE:
+        return "None";
     }
 }
 
-string outputParameterToString(OutputParameter param) {
+string outputParameterToString(OutputParameter param)
+{
     switch (param)
     {
-        case OutputParameter::TIME: return "Time";
-        case OutputParameter::COMP: return "Comparisons";
-        case OutputParameter::BOTH: return "Both";
-        case OutputParameter::NONE: return "None";
+    case OutputParameter::TIME:
+        return "Time";
+    case OutputParameter::COMP:
+        return "Comparisons";
+    case OutputParameter::BOTH:
+        return "Both";
+    case OutputParameter::NONE:
+        return "None";
     }
 }
-int* Controller::readFile()
+int *Controller::readFile()
 {
     ifstream file(fileName);
     if (!file.is_open())
@@ -65,7 +90,7 @@ int* Controller::readFile()
     {
         v.push_back(num);
     }
-    int* arr = new int[v.size()];
+    int *arr = new int[v.size()];
     for (int i = 0; i < v.size(); i++)
     {
         arr[i] = v[i];
@@ -163,7 +188,7 @@ Controller::Controller(int argc, char *argv[])
         {
             this->outputParam = OutputParameter::BOTH;
         }
-        else 
+        else
         {
             this->inputOrderParam = InputOrder::NONE;
         }
@@ -198,62 +223,263 @@ Controller::Controller(int argc, char *argv[])
         }
     }
 }
+Controller::~Controller()
+{
+    if (fileData != nullptr)
+        delete[] fileData;
+    if (randomData != nullptr)
+        delete[] randomData;
+    if (nsortedData != nullptr)
+        delete[] nsortedData;
+    if (sortedData != nullptr)
+        delete[] sortedData;
+    if (revData != nullptr)
+        delete[] revData;
+}
 void Controller::run()
 {
-//     cout << "Size: " << size << endl;
-//     cout << "FileName: " << fileName << endl;
-//     cout << "Algorithm1: " << sortingAlgorithmToString(this->algorithmParam1) << endl;
-//     cout << "Algorithm2: " << sortingAlgorithmToString(this->algorithmParam2) << endl;
-//     cout << "Input Order: " << inputOrderToString(this->inputOrderParam) << endl;
-//     cout << "Output Parameter: " << outputParameterToString(this->outputParam) << endl;
     switch (this->inputOrderParam)
     {
-        case InputOrder::RAND:
-            this->randomData = GenerateRandomData(this->size);
-            break;
-        case InputOrder::NSORTED:
-            this->nsortedData = GenerateNearlySortedData(this->size);
-            break;
-        case InputOrder::SORTED:
-            this->nsortedData = GenerateSortedData(this->size);
-            break;
-        case InputOrder::REV:
-            this->nsortedData = GenerateReverseData(this->size);
-            break;
-        
-        default:
-            // do all
-            this->randomData = GenerateRandomData(this->size);
-            this->nsortedData = GenerateNearlySortedData(this->size);
-            this->nsortedData = GenerateSortedData(this->size);
-            this->nsortedData = GenerateReverseData(this->size);
-            break;
+    case InputOrder::RAND:
+        this->randomData = GenerateRandomData(this->size);
+        break;
+    case InputOrder::NSORTED:
+        this->nsortedData = GenerateNearlySortedData(this->size);
+        break;
+    case InputOrder::SORTED:
+        this->nsortedData = GenerateSortedData(this->size);
+        break;
+    case InputOrder::REV:
+        this->nsortedData = GenerateReverseData(this->size);
+        break;
+
+    default:
+        // do all
+        this->randomData = GenerateRandomData(this->size);
+        this->nsortedData = GenerateNearlySortedData(this->size);
+        this->nsortedData = GenerateSortedData(this->size);
+        this->nsortedData = GenerateReverseData(this->size);
+        break;
     }
 
     switch (algorithmParam1)
     {
-        case SortingAlgorithm::SELECTION_SORT:
+    case SortingAlgorithm::SELECTION_SORT:
+    {
+        SelectionSort *sort = new SelectionSort(this->randomData, this->size);
+        switch (outputParam)
         {
-            SelectionSort *sort = new SelectionSort(this->randomData, this->size);
-            switch (outputParam)
-            {
-                case OutputParameter::TIME:
-                {
-                    cout << "Selection Sort Time: " << sort->sortWithRunningTimeCount() << endl;
-                    break;
-                }
-                case OutputParameter::COMP:
-                {
-                    cout << "Selection Sort Comparison: " << sort->sortWithComparisonCount() << endl;
-                    break;
-                }
-                case OutputParameter::BOTH:
-                {
-                    cout << "Selection Sort Time: " << sort->sortWithRunningTimeCount() << endl;
-                    cout << "Selection Sort Comparison: " << sort->sortWithComparisonCount() << endl;
-                    break;
-                }
-            }
+        case OutputParameter::TIME:
+        {
+            cout << "Selection Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+            break;
         }
-    }   
+        case OutputParameter::COMP:
+        {
+            cout << "Selection Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+            break;
+        }
+        case OutputParameter::BOTH:
+        {
+            cout << "Selection Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+            cout << "Selection Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+            break;
+        }
+        }
+        break;
+    }
+    case SortingAlgorithm::INSERTION_SORT:
+    {
+        InsertionSort *sort = new InsertionSort(this->randomData, this->size);
+        switch (outputParam)
+        {
+        case OutputParameter::TIME:
+        {
+            cout << "Insertion Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+            break;
+        }
+        case OutputParameter::COMP:
+        {
+            cout << "Insertion Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+            break;
+        }
+        case OutputParameter::BOTH:
+        {
+            cout << "Insertion Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+            cout << "Insertion Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+            break;
+        }
+        }
+        break;
+    }
+    // case SortingAlgorithm::SHELL_SORT:
+    // {
+    //     ShellSort *sort = new ShellSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Shell Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Shell Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Shell Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Shell Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::BUBBLE_SORT:
+    // {
+    //     BubbleSort *sort = new BubbleSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Bubble Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Bubble Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Bubble Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Bubble Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::HEAP_SORT:
+    // {
+    //     HeapSort *sort = new HeapSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Heap Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Heap Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Heap Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Heap Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::MERGE_SORT:
+    // {
+    //     MergeSort *sort = new MergeSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Merge Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Merge Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Merge Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Merge Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::QUICK_SORT:
+    // {
+    //     QuickSort *sort = new QuickSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Quick Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Quick Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Quick Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Quick Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::RADIX_SORT:
+    // {
+    //     RadixSort *sort = new RadixSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Radix Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Radix Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Radix Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Radix Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+    // case SortingAlgorithm::COUNTING_SORT:
+    // {
+    //     CountingSort *sort = new CountingSort(this->randomData, this->size);
+    //     switch (outputParam)
+    //     {
+    //     case OutputParameter::TIME:
+    //     {
+    //         cout << "Counting Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::COMP:
+    //     {
+    //         cout << "Counting Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     case OutputParameter::BOTH:
+    //     {
+    //         cout << "Counting Sort Time: " << sort->sortWithRunningTimeCount() << endl;
+    //         cout << "Counting Sort Comparison: " << sort->sortWithComparisonCount() << endl;
+    //         break;
+    //     }
+    //     }
+    //     break;
+    // }
+
+    }
 }

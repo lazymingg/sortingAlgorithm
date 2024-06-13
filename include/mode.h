@@ -5,6 +5,6 @@
 #include <cstring>
 using namespace std;
 
-void algorithmMode(int argc, char* argv[]);
+void algorithmMode(int argc, char *argv[]);
 
 #endif // MODE_H

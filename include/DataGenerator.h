@@ -8,9 +8,9 @@
 template <class T>
 void Swap(T &a, T &b);
 
-int* GenerateRandomData(int n);
-int* GenerateSortedData(int n);
-int* GenerateReverseData(int n);
-int* GenerateNearlySortedData(int n);
-int* GenerateData(int n, int dataType);
+int *GenerateRandomData(int n);
+int *GenerateSortedData(int n);
+int *GenerateReverseData(int n);
+int *GenerateNearlySortedData(int n);
+int *GenerateData(int n, int dataType);
 #endif // DATAGENERATOR_H

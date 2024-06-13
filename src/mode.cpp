@@ -1,6 +1,6 @@
 #include "../include/mode.h"
 #include "../include/Controller.h"
-void algorithmMode(int argc, char* argv[])
+void algorithmMode(int argc, char *argv[])
 {
     // check if the user wants to run the program in algorithm mode
     if (strcmp(argv[1], "-a") == 0)
