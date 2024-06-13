@@ -1,4 +1,4 @@
-﻿#include "DataGenerator.h"
+﻿#include "../include/DataGenerator.h"
 
 template <class T>
 void Swap(T &a, T &b)

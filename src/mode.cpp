@@ -1,11 +1,12 @@
-#include "mode.h"
+#include "../include/mode.h"
 void algorithmMode(int argc, char* argv[])
 {
     // check if the user wants to run the program in algorithm mode
     if (strcmp(argv[1], "-a") == 0)
     {
         cout << "ALGORITHM MODE" << endl;
-        AlgorithmMode mode(argc, argv);
+        AlgorithmMode algorithmMode(argc, argv);
+        algorithmMode.run();
     }
     else if (strcmp(argv[1], "-c") == 0)
     {

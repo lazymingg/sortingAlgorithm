@@ -1,76 +1,84 @@
-#include "selectionSort.h"
+#include "../include/selectionSort.h"
 
-class SelectionSort {
-private:
-    int runningTime = 0;
-    int comparison = 0;
-    int* tempArr;
-    int* tempArr2;
-    int size;
+// class SelectionSort {
+// public:
+//     SelectionSort(int* arr, int n);
+//     ~SelectionSort();
+//     int sortWithComparisonCount();
+//     int sortWithRunningTimeCount();
+//     int getComparison();
+//     int getRunningTime();
+// private:
+//     int runningTime = 0;
+//     int comparison = 0;
+//     int* tempArr;
+//     int* tempArr2;
+//     int size;
+// };
+#include <iostream>
+#include <chrono>
+#include <algorithm>
+using namespace std;
 
-public:
-    SelectionSort(int* arr, int n)
+SelectionSort::SelectionSort(int* arr, int n)
+{
+    this->size = n;
+    this->tempArr = new int[n];
+    this->tempArr2 = new int[n];
+    for (int i = 0; i < n; i++)
     {
-        this->size = n;
-        this->tempArr = new int[n];
-        this->tempArr2 = new int[n];
-        for (int i = 0; i < n; i++)
-        {
-            this->tempArr[i] = arr[i];
-            this->tempArr2[i] = arr[i];
-        }
-
-        comparison = sortWithComparisonCount();
-        runningTime = sortWithRunningTimeCount();
+        this->tempArr[i] = arr[i];
+        this->tempArr2[i] = arr[i];
     }
-    ~SelectionSort()
-    {
-        delete[] tempArr;
-        delete[] tempArr2;
-    }
+}
+SelectionSort::~SelectionSort()
+{
+    delete[] tempArr;
+    delete[] tempArr2;
+}
 
-    int sortWithComparisonCount()
+int SelectionSort::sortWithComparisonCount()
+{
+    for (int i = 0; i < size - 1; i++)
     {
-        for (int i = 0; i < size - 1; i++)
+        int minIndex = i;
+        for (int j = i + 1; j < size; j++)
         {
-            int minIndex = i;
-            for (int j = i + 1; j < size; j++)
+            comparison++;
+            if (tempArr[j] < tempArr[minIndex])
             {
-                comparison++;
-                if (tempArr[j] < tempArr[minIndex])
-                {
-                    minIndex = j;
-                }
+                minIndex = j;
             }
-            swap(tempArr[i], tempArr[minIndex]);
         }
-        return comparison;
+        swap(tempArr[i], tempArr[minIndex]);
     }
-    int sortWithRunningTimeCount()
+    return comparison;
+}
+int SelectionSort::sortWithRunningTimeCount()
+{
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < size - 1; i++)
     {
-        auto start = std::chrono::high_resolution_clock::now();
-        for (int i = 0; i < size - 1; i++)
+        int minIndex = i;
+        for (int j = i + 1; j < size; j++)
         {
-            int minIndex = i;
-            for (int j = i + 1; j < size; j++)
+            if (tempArr2[j] < tempArr2[minIndex])
             {
-                if (tempArr2[j] < tempArr2[minIndex])
-                {
-                    minIndex = j;
-                }
+                minIndex = j;
             }
-            swap(tempArr2[i], tempArr2[minIndex]);
         }
-        auto end = std::chrono::high_resolution_clock::now();
-        runningTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-        return runningTime;
+        swap(tempArr2[i], tempArr2[minIndex]);
     }
-    int getRunningTime()
-    {
-        return runningTime;
-    }
-    int getComparison()
-    {
-        return comparison;
-    }
-};
+    auto end = std::chrono::high_resolution_clock::now();
+    runningTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    return runningTime;
+}
+int SelectionSort::getRunningTime()
+{
+    return sortWithRunningTimeCount();
+}
+int SelectionSort::getComparison()
+{
+    return sortWithComparisonCount();
+}
+

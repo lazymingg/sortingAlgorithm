@@ -1,13 +1,6 @@
 #ifndef selectionSort
 #define selectionSort
 
-#include <iostream>
-#include <chrono>
-#include <algorithm>
-using namespace std;
-
-
-
 class SelectionSort {
 public:
     SelectionSort(int* arr, int n);

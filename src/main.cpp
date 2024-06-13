@@ -1,4 +1,4 @@
-#include "mode.h"
+#include "../include/mode.h"
 using namespace std;
 int main(int argc, char* argv[])
 {
