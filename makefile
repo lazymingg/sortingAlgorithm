@@ -2,35 +2,22 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -I include
+CXXFLAGS = -I./include -I./include/sortHeader
 
-# Linker flags
-LDFLAGS = -mconsole
+# Source directories
+SRC_DIR = src
+SRC_SORT_DIR = src/sortSource
 
-# Sources
-SRCS := $(wildcard src/*.cpp)
+# Source files
+SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_SORT_DIR)/*.cpp)
 
-# Object files
-OBJS = $(SRCS:.cpp=.o)
+# Output executable
+TARGET = main
 
-# Executable
-EXEC = my_program
+# Build rule
+$(TARGET): $(SRC_FILES)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC_FILES)
 
-# Default target
-all: $(EXEC)
-
-# Link
-$(EXEC): $(OBJS)
-	$(CXX) $(OBJS) -o $(EXEC) $(LDFLAGS)
-
-# Compile
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean
+# Clean rule
 clean:
-	rm -f $(OBJS) $(EXEC)
-
-.PHONY: all clean
-
-#g++ -o main src/*.cpp -I ./include/
+	rm -f $(TARGET)

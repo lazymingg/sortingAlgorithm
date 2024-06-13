@@ -1,5 +1,4 @@
-#include "../include/selectionSort.h"
-
+#include "../../include/sortHeader/selectionSort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>
