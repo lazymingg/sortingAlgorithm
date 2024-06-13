@@ -33,14 +33,4 @@ clean:
 
 .PHONY: all clean
 
-# g++ -I include -o my_program src/*.cpp
-# //compile main.cpp
-# //g++ -I include -c main.cpp -o src/main.o
-# // link all object files
-# //g++ src/main.o src/other.o -o my_program -mconsole
-# help me write make file 
-#my program is the executable file
-#src is the folder where all the source files are present
-# include is the folder where all the header files are present
-
-
+#g++ -o main src/*.cpp -I ./include/

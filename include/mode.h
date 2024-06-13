@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cstring>
-#include "AlgorithmMode.h"
 using namespace std;
 
 void algorithmMode(int argc, char* argv[]);

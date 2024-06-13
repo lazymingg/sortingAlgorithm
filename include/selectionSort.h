@@ -6,11 +6,11 @@ public:
     SelectionSort(int* arr, int n);
     ~SelectionSort();
     int sortWithComparisonCount();
-    int sortWithRunningTimeCount();
+    double sortWithRunningTimeCount();
     int getComparison();
-    int getRunningTime();
+    double getRunningTime();
 private:
-    int runningTime = 0;
+    double runningTime = 0;
     int comparison = 0;
     int* tempArr;
     int* tempArr2;

@@ -1,20 +1,5 @@
 #include "../include/selectionSort.h"
 
-// class SelectionSort {
-// public:
-//     SelectionSort(int* arr, int n);
-//     ~SelectionSort();
-//     int sortWithComparisonCount();
-//     int sortWithRunningTimeCount();
-//     int getComparison();
-//     int getRunningTime();
-// private:
-//     int runningTime = 0;
-//     int comparison = 0;
-//     int* tempArr;
-//     int* tempArr2;
-//     int size;
-// };
 #include <iostream>
 #include <chrono>
 #include <algorithm>
@@ -54,9 +39,9 @@ int SelectionSort::sortWithComparisonCount()
     }
     return comparison;
 }
-int SelectionSort::sortWithRunningTimeCount()
+double SelectionSort::sortWithRunningTimeCount()
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::system_clock::now();
     for (int i = 0; i < size - 1; i++)
     {
         int minIndex = i;
@@ -69,11 +54,13 @@ int SelectionSort::sortWithRunningTimeCount()
         }
         swap(tempArr2[i], tempArr2[minIndex]);
     }
-    auto end = std::chrono::high_resolution_clock::now();
-    runningTime = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    
+    auto end = std::chrono::system_clock::now();
+    // runningTime = std::chrono::duration_cast<double, std::milli>(end - start).count();
+    runningTime = chrono::duration<double,milli>(end - start).count();
     return runningTime;
 }
-int SelectionSort::getRunningTime()
+double SelectionSort::getRunningTime()
 {
     return sortWithRunningTimeCount();
 }
@@ -81,4 +68,3 @@ int SelectionSort::getComparison()
 {
     return sortWithComparisonCount();
 }
-

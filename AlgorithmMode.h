@@ -1,11 +1,6 @@
 #ifndef ALGORITHMMODE_H
 #define ALGORITHMMODE_H
-
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <cstring>
-
+#include <string>
 using namespace std;
 
 enum class SortingAlgorithm {
@@ -31,7 +26,8 @@ enum class InputOrder {
 enum class OutputParameter {
     TIME,
     COMP,
-    BOTH
+    BOTH,
+    NONE
 };
 
 class AlgorithmMode {

@@ -40,6 +40,7 @@ string outputParameterToString(OutputParameter param) {
         default: return "Unknown Output Parameter";
     }
 }
+
 bool isDigit(char* str)
 {
     for (int i = 0; i < strlen(str); i++)
