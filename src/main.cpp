@@ -4,7 +4,9 @@ int main(int argc, char *argv[])
 {
     if (argc < 5)
     {
-        cout << "Usage: " << argv[0] << " -a <algorithm> <input_file|size> <order|parameters>\n";
+        cout << "invalic arguments\n";
+        cout << "use main -h for help\n";
+        cout << "use main -p for prototypes\n";
         return 1;
     }
     algorithmMode(argc, argv);

@@ -1,21 +1,35 @@
 #include "../include/mode.h"
-#include "../include/Controller.h"
+#include "../include/ControllerComparisonMode.h"
+#include "../include/ControllerAlgorithmMode.h"
 void algorithmMode(int argc, char *argv[])
 {
     // check if the user wants to run the program in algorithm mode
     if (strcmp(argv[1], "-a") == 0)
     {
         cout << "ALGORITHM MODE" << endl;
-        Controller a(argc, argv);
+        ControllerAlgorithmMode a(argc, argv);
         a.run();
     }
     else if (strcmp(argv[1], "-c") == 0)
     {
         cout << "COMPARISON MODE" << endl;
+        ControllerComparisonMode c(argc, argv);
+        c.run();
     }
-    else
+    if (strcmp(argv[1], "-a") != 0 && strcmp(argv[1], "-c") != 0)
     {
-        cout << "Usage: " << argv[0] << " -a <algorithm> <input_file|size> <order|parameters>\n";
+        printPrototypes();
         return;
     }
+    if (strcmp(argv[1], "-h") == 0)
+    {
+        printParameterInfo();
+        return;
+    } 
+    if (strcmp(argv[1], "-p") == 0)
+    {
+        printPrototypes();
+        return;
+    }
+    return;
 }
