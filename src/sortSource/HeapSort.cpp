@@ -22,61 +22,91 @@ HeapSort::~HeapSort()
     delete[] tempArr2;
 }
 
-void HeapSort::heapify(int arr[], int n, int i)
+void HeapSort::heapify(int *arr, int current, int size)
 {
-    int largest = i;
-    int left = 2*i + 1;
-    int right = 2*i + 2;
+    int largest = current;
+    int left = 2 * current + 1;
+    int right = 2 * current + 2;
 
-    if (left < n && arr[left] > arr[largest])
+    //if left child is larger than root
+    if (left < size && arr[left] > arr[largest])
+    {
         largest = left;
-
-    if (right < n && arr[right] > arr[largest])
+    }
+    //if right child is larger than root
+    if (right < size && arr[right] > arr[largest])
+    {
         largest = right;
-
-    if (largest != i)
+    }
+    //if largest is not root
+    if (largest != current)
     {
-        swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        swap(arr[current], arr[largest]);
+        heapify(arr, largest, size);
     }
 }
 
-int HeapSort::sortWithComparisonCount()
+void HeapSort::heapSort(int *arr, int size)
 {
+    //build heap
     for (int i = size / 2 - 1; i >= 0; i--)
-        heapify(tempArr, size, i);
-
-    for (int i=size-1; i>=0; i--)
     {
-        swap(tempArr[0], tempArr[i]);
-        heapify(tempArr, i, 0);
-        comparison++;
+        heapify(arr, i, size);
     }
-    return comparison;
-}
-
-double HeapSort::sortWithRunningTimeCount()
-{
-    auto start = std::chrono::system_clock::now();
-    for (int i = size / 2 - 1; i >= 0; i--)
-        heapify(tempArr2, size, i);
-
-    for (int i=size-1; i>=0; i--)
+    for (int i = size - 1; i >= 0; i--)
     {
-        swap(tempArr2[0], tempArr2[i]);
-        heapify(tempArr2, i, 0);
+        swap(arr[0], arr[i]);
+        heapify(arr, 0, i);
     }
-    auto end = std::chrono::system_clock::now();
-    runningTime = chrono::duration<double, milli>(end - start).count();
-    return runningTime;
 }
-
-int HeapSort::getComparison()
+void HeapSort::heapifyWithComparisonCount(int *arr, int current, int size)
 {
-    return comparison;
+    int largest = current;
+    int left = 2 * current + 1;
+    int right = 2 * current + 2;
+    //if left child is larger than root
+    if (++this->comparison && left < size && arr[left] > arr[largest])
+    {
+        largest = left;
+    }
+    //if right child is larger than root
+    if (++this->comparison && right < size && arr[right] > arr[largest])
+    {
+        largest = right;
+    }
+    //if largest is not root
+    if (++this->comparison && largest != current)
+    {
+        swap(arr[current], arr[largest]);
+        heapifyWithComparisonCount(arr, largest, size);
+    }
+}
+void HeapSort::heapSortWithComparisonCount(int *arr, int size)
+{
+    //build heap
+    for (int i = size / 2 - 1; ++this->comparison && i >= 0; i--)
+    {
+        heapifyWithComparisonCount(arr, i, size);
+    }
+    for (int i = size - 1; ++this->comparison && i >= 0; i--)
+    {
+        swap(arr[0], arr[i]);
+        heapifyWithComparisonCount(arr, 0, i);
+    }
 }
 
+int64_t HeapSort::getComparison()
+{
+    heapSortWithComparisonCount(this->tempArr, this->size);
+    return this->comparison;
+}
 double HeapSort::getRunningTime()
 {
-    return runningTime;
+    // res in miliseconds
+    auto start = chrono::high_resolution_clock::now();
+    heapSort(this->tempArr2, this->size);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration = end - start;
+    this->runningTime = duration.count();
+    return this->runningTime;
 }

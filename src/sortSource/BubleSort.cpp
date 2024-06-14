@@ -2,6 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
+#include <cstdint>
 using namespace std;
 
 BubbleSort::BubbleSort(int *arr, int n)
@@ -21,37 +22,44 @@ BubbleSort::~BubbleSort()
     delete[] tempArr;
     delete[] tempArr2;
 }
-
-int BubbleSort::sortWithComparisonCount()
+void BubbleSort::BubbleSortRunningTimeCount(int *arr, int n)
 {
-    for (int i = 0; i < size-1; i++)      
-        for (int j = 0; j < size-i-1; j++) 
-            if (tempArr[j] > tempArr[j+1])
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
             {
-                comparison++;
-                swap(tempArr[j], tempArr[j+1]);
+                swap(arr[j], arr[j + 1]);
             }
-    return comparison;
+        }
+    }
 }
-
-double BubbleSort::sortWithRunningTimeCount()
+void BubbleSort::BubbleSortComparisonCount(int *arr, int n)
 {
-    auto start = std::chrono::system_clock::now();
-    for (int i = 0; i < size-1; i++)      
-        for (int j = 0; j < size-i-1; j++) 
-            if (tempArr2[j] > tempArr2[j+1])
-                swap(tempArr2[j], tempArr2[j+1]);
-    auto end = std::chrono::system_clock::now();
-    runningTime = chrono::duration<double, milli>(end - start).count();
-    return runningTime;
+    for (int i = 0; ++this->comparison && i < n - 1; i++)
+    {
+        for (int j = 0; ++this->comparison && j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
 }
-
-int BubbleSort::getComparison()
+int64_t BubbleSort::getComparison()
 {
-    return comparison;
+    BubbleSortComparisonCount(this->tempArr, this->size);
+    return this->comparison;
 }
 
 double BubbleSort::getRunningTime()
 {
-    return runningTime;
+    // time in mili seconds
+    auto start = chrono::high_resolution_clock::now();
+    BubbleSortRunningTimeCount(this->tempArr2, this->size);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration = end - start;
+    return duration.count();
 }

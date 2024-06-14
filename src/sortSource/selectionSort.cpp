@@ -2,6 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
+#include <cstdint>
 using namespace std;
 
 SelectionSort::SelectionSort(int *arr, int n)
@@ -21,48 +22,48 @@ SelectionSort::~SelectionSort()
     delete[] tempArr2;
 }
 
-int SelectionSort::sortWithComparisonCount()
+void SelectionSort::selectionSortRunningTimeCount(int *arr, int n)
 {
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         int minIndex = i;
-        for (int j = i + 1; j < size; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            comparison++;
-            if (tempArr[j] < tempArr[minIndex])
+            if (arr[j] < arr[minIndex])
             {
                 minIndex = j;
             }
         }
-        swap(tempArr[i], tempArr[minIndex]);
+        swap(arr[i], arr[minIndex]);
     }
-    return comparison;
 }
-double SelectionSort::sortWithRunningTimeCount()
+void SelectionSort::selectionSortComparionCount(int *arr, int n)
 {
-    auto start = std::chrono::system_clock::now();
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; ++this->comparison && i < n - 1; i++)
     {
         int minIndex = i;
-        for (int j = i + 1; j < size; j++)
+        for (int j = i + 1; ++this->comparison && j < n; j++)
         {
-            if (tempArr2[j] < tempArr2[minIndex])
+            if (arr[j] < arr[minIndex])
             {
                 minIndex = j;
             }
         }
-        swap(tempArr2[i], tempArr2[minIndex]);
+        swap(arr[i], arr[minIndex]);
     }
-
-    auto end = std::chrono::system_clock::now();
-    runningTime = chrono::duration<double, milli>(end - start).count();
-    return runningTime;
 }
 double SelectionSort::getRunningTime()
 {
-    return sortWithRunningTimeCount();
+    // time in mili seconds
+    auto start = chrono::high_resolution_clock::now();
+    selectionSortRunningTimeCount(this->tempArr2, this->size);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration = end - start;
+    this->runningTime = duration.count();
+    return this->runningTime;
 }
-int SelectionSort::getComparison()
+int64_t SelectionSort::getComparison()
 {
-    return sortWithComparisonCount();
+    selectionSortComparionCount(this->tempArr, this->size);
+    return this->comparison;
 }

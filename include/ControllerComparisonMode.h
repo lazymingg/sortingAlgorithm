@@ -1,7 +1,6 @@
 #ifndef CONTROLLER_COMPARISON_MODE_H
 #define CONTROLLER_COMPARISON_MODE_H
 #include "../include/ControllerUltility.h"
-
 using namespace std;
 
 class ControllerComparisonMode {

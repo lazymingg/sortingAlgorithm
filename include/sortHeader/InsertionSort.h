@@ -1,21 +1,21 @@
 #ifndef INSERTIONSORT_H
 #define INSERTIONSORT_H
-
+#include <cstdint>
 class InsertionSort
 {
 public:
     InsertionSort(int *arr, int n);
     ~InsertionSort();
-    int sortWithComparisonCount();
-    double sortWithRunningTimeCount();
-    int getComparison();
+    int64_t getComparison();
     double getRunningTime();
 
 private:
+    void insertionSortRunningTimeCount(int *arr, int n);
+    void insertionSortComparisonCount(int *arr, int n);
     double runningTime = 0;
-    int comparison = 0;
-    int *tempArr;
-    int *tempArr2;
+    int64_t comparison = 0;
+    int *tempArr = NULL;
+    int *tempArr2 = NULL;
     int size;
 };
 

@@ -1,23 +1,24 @@
 #ifndef HEAPSORT_H
 #define HEAPSORT_H
-
-class HeapSort {
+#include <cstdint>
+class HeapSort
+{
 public:
     HeapSort(int *arr, int n);
     ~HeapSort();
-
-    int sortWithComparisonCount();
-    double sortWithRunningTimeCount();
-    int getComparison();
+    int64_t getComparison();
     double getRunningTime();
 
 private:
-    void heapify(int arr[], int n, int i);
-    int *tempArr;
-    int *tempArr2;
-    int size;
-    int comparison = 0;
-    double runningTime = 0.0;
+    void heapify(int *arr, int current, int size);
+    void heapSort(int *arr, int size);
+    void heapifyWithComparisonCount(int *arr, int current, int size);
+    void heapSortWithComparisonCount(int *arr, int size);
+    int *tempArr = NULL;
+    int *tempArr2 = NULL;
+    int size = 0;
+    int64_t comparison = 0;
+    double runningTime = 0;
 };
 
 #endif // HEAPSORT_H

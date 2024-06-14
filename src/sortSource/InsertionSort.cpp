@@ -20,45 +20,46 @@ InsertionSort::~InsertionSort()
     delete[] tempArr;
     delete[] tempArr2;
 }
-int InsertionSort::sortWithComparisonCount()
+void InsertionSort::insertionSortRunningTimeCount(int *arr, int n)
 {
-    for (int i = 1; i < size; i++)
+    for (int i = 1; i < n; i++)
     {
-        int key = tempArr[i];
+        int key = arr[i];
         int j = i - 1;
-        while (j >= 0 && tempArr[j] > key)
+        while (j >= 0 && arr[j] > key)
         {
-            comparison++;
-            tempArr[j + 1] = tempArr[j];
-            j = j - 1;
+            arr[j + 1] = arr[j];
+            j--;
         }
-        tempArr[j + 1] = key;
+        arr[j + 1] = key;
     }
-    return comparison;
 }
-double InsertionSort::sortWithRunningTimeCount()
+void InsertionSort::insertionSortComparisonCount(int *arr, int n)
 {
-    auto start = std::chrono::system_clock::now();
-    for (int i = 1; i < size; i++)
+    for (int i = 1; ++this->comparison && i < n; i++)
     {
-        int key = tempArr2[i];
+        int key = arr[i];
         int j = i - 1;
-        while (j >= 0 && tempArr2[j] > key)
+        while (++this->comparison && j >= 0 && arr[j] > key)
         {
-            tempArr2[j + 1] = tempArr2[j];
-            j = j - 1;
+            arr[j + 1] = arr[j];
+            j--;
         }
-        tempArr2[j + 1] = key;
+        arr[j + 1] = key;
     }
-    auto end = std::chrono::system_clock::now();
-    runningTime = chrono::duration<double, milli>(end - start).count();
-    return runningTime;
 }
-int InsertionSort::getComparison()
+int64_t InsertionSort::getComparison()
 {
-    return comparison;
+    insertionSortComparisonCount(this->tempArr, this->size);
+    return this->comparison;
 }
 double InsertionSort::getRunningTime()
 {
-    return runningTime;
+    // time in mili seconds
+    auto start = chrono::high_resolution_clock::now();
+    insertionSortRunningTimeCount(this->tempArr2, this->size);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration = end - start;
+    this->runningTime = duration.count();
+    return this->runningTime;
 }

@@ -1,23 +1,30 @@
 #ifndef RADIXSORT_H
 #define RADIXSORT_H
 
-class RadixSort {
+#include <cstdint>
+#include <chrono>
+
+class RadixSort
+{
 public:
     RadixSort(int *arr, int n);
     ~RadixSort();
-
-    int sortWithComparisonCount();
-    double sortWithRunningTimeCount();
-    int getComparison();
+    int64_t getComparison();
     double getRunningTime();
 
 private:
-    int getMax(int arr[], int n);
-    void countSort(int arr[], int n, int exp);
-    int *tempArr;
-    int *tempArr2;
-    int size;
-    int comparison = 0;
+    void radixSort(int *arr, int n);
+    int getMax(int *arr, int n);
+    void countSort(int *arr, int n, int digit);
+
+    void radixSortWithComparisonCount(int *arr, int n);
+    int getMaxWithComparisonCount(int *arr, int n);
+    void countSortWithComparisonCount(int *arr, int n, int digit);
+
+    int *tempArr = NULL;
+    int *tempArr2 = NULL;
+    int size = 0;
+    int64_t comparison = 0;
     double runningTime = 0.0;
 };
 

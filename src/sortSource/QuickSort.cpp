@@ -22,56 +22,102 @@ QuickSort::~QuickSort()
     delete[] tempArr2;
 }
 
-int QuickSort::partition(int arr[], int low, int high)
+int QuickSort::partition(int *arr, int left, int right)
 {
-    int pivot = arr[high];
-    int i = (low - 1);
-
-    for (int j = low; j <= high - 1; j++)
+    //middleof three
+    int mid = left + (right - left) / 2;
+    if (arr[mid] < arr[left])
     {
-        if (arr[j] < pivot)
+        swap(arr[mid], arr[left]);
+    }
+    if (arr[right] < arr[left])
+    {
+        swap(arr[right], arr[left]);
+    }
+    if (arr[mid] < arr[right])
+    {
+        swap(arr[mid], arr[right]);
+    }
+    
+    int pivot = arr[right];
+    int inx = left;
+    
+    for (int i = left; i < right; i++)
+    {
+        if (arr[i] < pivot)
         {
-            i++;
-            swap(arr[i], arr[j]);
-            comparison++;
+            swap(arr[i], arr[inx]);
+            inx++;
         }
     }
-    swap(arr[i + 1], arr[high]);
-    return (i + 1);
+    swap(arr[inx], arr[right]);
+    return inx;
 }
 
-void QuickSort::quickSort(int arr[], int low, int high)
+void QuickSort::quickSort(int *arr, int left, int right)
 {
-    if (low < high)
+    if (left < right)
     {
-        int pi = partition(arr, low, high);
+        int pi = partition(arr, left, right);
 
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        quickSort(arr, left, pi - 1);
+        quickSort(arr, pi + 1, right);
+    }
+}
+int QuickSort::partitionWithComparisonCount(int *arr, int left, int right)
+{
+    //middleof three
+    int mid = left + (right - left) / 2;
+    if (++this->comparison && arr[mid] < arr[left])
+    {
+        swap(arr[mid], arr[left]);
+    }
+    if (++this->comparison && arr[right] < arr[left])
+    {
+        swap(arr[right], arr[left]);
+    }
+    if (++this->comparison && arr[mid] < arr[right])
+    {
+        swap(arr[mid], arr[right]);
+    }
+    int pivot = arr[right];
+    int inx = left;
+    
+    for (int i = left; ++this->comparison && i < right; i++)
+    {
+        if (++this->comparison && arr[i] < pivot)
+        {
+            swap(arr[i], arr[inx]);
+            inx++;
+        }
+    }
+    swap(arr[inx], arr[right]);
+    return inx;
+}
+
+void QuickSort::quickSortWithComparisonCount(int *arr, int left, int right)
+{
+    if (++this->comparison && left < right)
+    {
+        int pi = partitionWithComparisonCount(arr, left, right);
+
+        quickSortWithComparisonCount(arr, left, pi - 1);
+        quickSortWithComparisonCount(arr, pi + 1, right);
     }
 }
 
-int QuickSort::sortWithComparisonCount()
+int64_t QuickSort::getComparison()
 {
-    quickSort(tempArr, 0, size - 1);
-    return comparison;
+    quickSortWithComparisonCount(this->tempArr, 0, this->size - 1);
+    return this->comparison;
 }
-
-double QuickSort::sortWithRunningTimeCount()
-{
-    auto start = std::chrono::system_clock::now();
-    quickSort(tempArr2, 0, size - 1);
-    auto end = std::chrono::system_clock::now();
-    runningTime = chrono::duration<double, milli>(end - start).count();
-    return runningTime;
-}
-
-int QuickSort::getComparison()
-{
-    return comparison;
-}
-
 double QuickSort::getRunningTime()
 {
-    return runningTime;
+    // time in mili seconds
+    auto start = chrono::high_resolution_clock::now();
+    quickSort(this->tempArr2, 0, this->size - 1);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double, milli> duration = end - start;
+    this->runningTime = duration.count();
+    return this->runningTime;
 }

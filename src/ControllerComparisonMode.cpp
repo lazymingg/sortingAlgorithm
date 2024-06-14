@@ -215,66 +215,66 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     case SortingAlgorithm::SELECTION_SORT:
     {
         SelectionSort *sort = new SelectionSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
     case SortingAlgorithm::INSERTION_SORT:
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
-    case SortingAlgorithm::SHELL_SORT:
-    {
-        ShellSort *sort = new ShellSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
-        delete sort;
-        return res;
-    }
+    // case SortingAlgorithm::SHELL_SORT:
+    // {
+    //     ShellSort *sort = new ShellSort(dataType, size);
+    //     double time =  sort->getRunningTime();
+    //     delete sort;
+    //     return time;
+    // }
     case SortingAlgorithm::BUBBLE_SORT:
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
     case SortingAlgorithm::HEAP_SORT:
     {
         HeapSort *sort = new HeapSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
     case SortingAlgorithm::MERGE_SORT:
     {
         MergeSort *sort = new MergeSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
     case SortingAlgorithm::QUICK_SORT:
     {
         QuickSort *sort = new QuickSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
     case SortingAlgorithm::RADIX_SORT:
     {
         RadixSort *sort = new RadixSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
+        double time =  sort->getRunningTime();
         delete sort;
-        return res;
+        return time;
     }
-    case SortingAlgorithm::COUNTING_SORT:
-    {
-        CountingSort *sort = new CountingSort(dataType, size);
-        double res =  sort->sortWithRunningTimeCount();
-        delete sort;
-        return res;
-    }
+    // case SortingAlgorithm::COUNTING_SORT:
+    // {
+    //     CountingSort *sort = new CountingSort(dataType, size);
+    //     double time =  sort->getRunningTime();
+    //     delete sort;
+    //     return time;
+    // }
     default:
         return 0;
     }
@@ -286,66 +286,66 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     case SortingAlgorithm::SELECTION_SORT:
     {
         SelectionSort *sort = new SelectionSort(dataType, size);
-        int64_t time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
     case SortingAlgorithm::INSERTION_SORT:
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
-    case SortingAlgorithm::SHELL_SORT:
-    {
-        ShellSort *sort = new ShellSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
-        delete sort;
-        return time;
-    }
+    // case SortingAlgorithm::SHELL_SORT:
+    // {
+    //     ShellSort *sort = new ShellSort(dataType, size);
+    //     int64_t comparison = sort->getComparison();
+    //     delete sort;
+    //     return comparison;
+    // }
     case SortingAlgorithm::BUBBLE_SORT:
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
     case SortingAlgorithm::HEAP_SORT:
     {
         HeapSort *sort = new HeapSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
     case SortingAlgorithm::MERGE_SORT:
     {
         MergeSort *sort = new MergeSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
     case SortingAlgorithm::QUICK_SORT:
     {
         QuickSort *sort = new QuickSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
     case SortingAlgorithm::RADIX_SORT:
     {
         RadixSort *sort = new RadixSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
+        int64_t comparison = sort->getComparison();
         delete sort;
-        return time;
+        return comparison;
     }
-    case SortingAlgorithm::COUNTING_SORT:
-    {
-        CountingSort *sort = new CountingSort(dataType, size);
-        double time = sort->sortWithRunningTimeCount();
-        delete sort;
-        return time;
-    }
+    // case SortingAlgorithm::COUNTING_SORT:
+    // {
+    //     CountingSort *sort = new CountingSort(dataType, size);
+    //     int64_t comparison = sort->getComparison();
+    //     delete sort;
+    //     return comparison;
+    // }
     default:
         return 0;
     }

@@ -1,22 +1,23 @@
 #ifndef selectionSort
 #define selectionSort
-
+#include <cstdint>
 class SelectionSort
 {
 public:
     SelectionSort(int *arr, int n);
     ~SelectionSort();
-    int sortWithComparisonCount();
-    double sortWithRunningTimeCount();
-    int getComparison();
+    void selectionSortRunningTimeCount(int *arr, int n);
+    void selectionSortComparionCount(int *arr, int n);
+    int64_t getComparison();
     double getRunningTime();
 
 private:
     double runningTime = 0;
-    int comparison = 0;
-    int *tempArr;
-    int *tempArr2;
-    int size;
+    int64_t comparison = 0;
+
+    int *tempArr = NULL;
+    int *tempArr2 = NULL;
+    int size = 0;
 };
 
 #endif

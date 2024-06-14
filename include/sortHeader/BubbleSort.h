@@ -1,21 +1,21 @@
 #ifndef BUBBLESORT_H
 #define BUBBLESORT_H
-
-class BubbleSort {
+#include <cstdint>
+class BubbleSort
+{
 public:
     BubbleSort(int *arr, int n);
     ~BubbleSort();
-
-    int sortWithComparisonCount();
-    double sortWithRunningTimeCount();
-    int getComparison();
+    int64_t getComparison();
     double getRunningTime();
 
 private:
-    int *tempArr;
-    int *tempArr2;
+    void BubbleSortRunningTimeCount(int *arr, int n);
+    void BubbleSortComparisonCount(int *arr, int n);
+    int *tempArr = NULL;
+    int *tempArr2 = NULL;
     int size;
-    int comparison = 0;
+    int64_t comparison = 0;
     double runningTime = 0.0;
 };
 
