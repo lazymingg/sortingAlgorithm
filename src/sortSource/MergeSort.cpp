@@ -76,6 +76,16 @@ void MergeSort::merge(int *arr, int left, int mid, int right)
     delete[] leftArr;
     delete[] rightArr;
 }
+void MergeSort::mergeSort(int *arr, int l, int r)
+{
+    if (l < r)
+    {
+        int mid = l + (r - l) / 2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+        merge(arr, l, mid, r);
+    }
+}
 void MergeSort::mergeWithComparisonCount(int *arr, int left, int mid, int right)
 {
     int const leftSubArraySize = mid - left + 1;
@@ -140,16 +150,7 @@ void MergeSort::mergeSortWithComparisonCount(int *arr, int l, int r)
     }
 }
 
-void MergeSort::mergeSort(int *arr, int l, int r)
-{
-    if (l < r)
-    {
-        int mid = l + (r - l) / 2;
-        mergeSort(arr, l, mid);
-        mergeSort(arr, mid + 1, r);
-        merge(arr, l, mid, r);
-    }
-}
+
 
 int64_t MergeSort::getComparison()
 {
