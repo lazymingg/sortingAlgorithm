@@ -4,13 +4,10 @@
 #include "../include/sortHeader/AllSort.h"
 #include "../include/DataGenerator.h"
 #include <iostream>
-#include <string>
 #include <vector>
-#include <cstring>
 #include <fstream>
 #include <cstdint>
 #include <string>
-#include <cctype>
 #include <cstring>
 
 

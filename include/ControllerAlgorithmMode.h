@@ -16,6 +16,7 @@ private:
     InputOrder inputOrderParam = InputOrder::NONE;
     OutputParameter outputParam = OutputParameter::NONE;
     string fileName = "";
+    
     int size = 0;
     int* fileData = NULL;
     int* randomData = NULL;
