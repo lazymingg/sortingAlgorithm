@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/HeapSort.h"
+#include "../../include/sortHeader/heap-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>

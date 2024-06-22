@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/InsertionSort.h"
+#include "../../include/sortHeader/insertion-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>

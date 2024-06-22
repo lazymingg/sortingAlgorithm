@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/QuickSort.h"
+#include "../../include/sortHeader/quick-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>
