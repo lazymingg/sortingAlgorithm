@@ -24,33 +24,31 @@ QuickSort::~QuickSort()
 
 int QuickSort::partition(int *arr, int left, int right)
 {
-    //middleof three
+    //median of three
     int mid = left + (right - left) / 2;
-    if (arr[mid] < arr[left])
-    {
-        swap(arr[mid], arr[left]);
+    if (arr[left] > arr[mid]) {
+        swap(arr[left], arr[mid]);
     }
-    if (arr[right] < arr[left])
-    {
-        swap(arr[right], arr[left]);
+    if (arr[left] > arr[right]) {
+        swap(arr[left], arr[right]);
     }
-    if (arr[mid] < arr[right])
-    {
+    if ( arr[mid] > arr[right]) {
         swap(arr[mid], arr[right]);
     }
+    swap(arr[mid], arr[left]);
     
-    int pivot = arr[right];
+    int pivot = arr[left];
     int inx = left;
+    int i = left + 1;
     
-    for (int i = left; i < right; i++)
+    for (i; i <= right; i++)
     {
         if (arr[i] < pivot)
         {
-            swap(arr[i], arr[inx]);
-            inx++;
+            swap(arr[i], arr[++inx]);
         }
     }
-    swap(arr[inx], arr[right]);
+    swap(arr[inx], arr[left]);
     return inx;
 }
 
@@ -66,32 +64,30 @@ void QuickSort::quickSort(int *arr, int left, int right)
 }
 int QuickSort::partitionWithComparisonCount(int *arr, int left, int right)
 {
-    //middleof three
+    //median of three
     int mid = left + (right - left) / 2;
-    if (++this->comparison && arr[mid] < arr[left])
-    {
-        swap(arr[mid], arr[left]);
+    if (++this->comparison && arr[left] > arr[mid]) {
+        swap(arr[left], arr[mid]);
     }
-    if (++this->comparison && arr[right] < arr[left])
-    {
-        swap(arr[right], arr[left]);
+    if (++this->comparison && arr[left] > arr[right]) {
+        swap(arr[left], arr[right]);
     }
-    if (++this->comparison && arr[mid] < arr[right])
-    {
+    if (++this->comparison && arr[mid] > arr[right]) {
         swap(arr[mid], arr[right]);
     }
-    int pivot = arr[right];
+    swap(arr[mid], arr[left]);
+
+    int pivot = arr[left];
     int inx = left;
-    
-    for (int i = left; ++this->comparison && i < right; i++)
+    int i = left + 1;
+    for (i; ++this->comparison && i <= right; i++)
     {
         if (++this->comparison && arr[i] < pivot)
         {
-            swap(arr[i], arr[inx]);
-            inx++;
+            swap(arr[i], arr[++inx]);
         }
     }
-    swap(arr[inx], arr[right]);
+    swap(arr[inx], arr[left]);
     return inx;
 }
 
@@ -106,7 +102,7 @@ void QuickSort::quickSortWithComparisonCount(int *arr, int left, int right)
     }
 }
 
-int64_t QuickSort::getComparison()
+uint64_t QuickSort::getComparison()
 {
     quickSortWithComparisonCount(this->tempArr, 0, this->size - 1);
     return this->comparison;
