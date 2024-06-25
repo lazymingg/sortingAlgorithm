@@ -53,10 +53,29 @@ int QuickSort::partition(int *arr, int left, int right)
     swap(arr[inx], arr[right]);
     return inx;
 }
-
+void insertionSort(int *arr, int n)
+{
+    int key, j;
+    for (int i = 1; i < n; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
 void QuickSort::quickSort(int *arr, int left, int right)
 {
-    if (left < right)
+    if (right - left <= 10)
+    {
+        insertionSort(arr, right - left + 1);
+        return;
+    }
+    else
     {
         int pi = partition(arr, left, right);
 
@@ -97,6 +116,7 @@ int QuickSort::partitionWithComparisonCount(int *arr, int left, int right)
 
 void QuickSort::quickSortWithComparisonCount(int *arr, int left, int right)
 {
+
     if (++this->comparison && left < right)
     {
         int pi = partitionWithComparisonCount(arr, left, right);

@@ -78,7 +78,7 @@ void RadixSort::radixSort(int *arr, int n)
 int RadixSort::getMaxWithComparisonCount(int *arr, int n)
 {
     int max = arr[0];
-    for (int i = 1; this->comparison++ && i < n; i++)
+    for (int i = 1; ++this->comparison && i < n; i++)
     {
         if (arr[i] > max)
         {
@@ -93,23 +93,23 @@ void RadixSort::countSortWithComparisonCount(int *arr, int size, int digit)
     int *resArr = new int[size];
     int count[10] = {0};
 
-    for (int i = 0; this->comparison++ && i < size; i++)
+    for (int i = 0; ++this->comparison && i < size; i++)
     {
         count[(arr[i] / digit) % 10]++;
     }
 
-    for (int i = 1; this->comparison++ && i < 10; i++)
+    for (int i = 1; ++this->comparison && i < 10; i++)
     {
         count[i] += count[i - 1];
     }
 
-    for (int i = size - 1; this->comparison++ && i >= 0; i--)
+    for (int i = size - 1; ++this->comparison && i >= 0; i--)
     {
         resArr[count[(arr[i] / digit) % 10] - 1] = arr[i];
         count[(arr[i] / digit) % 10]--;
     }
 
-    for (int i = 0; this->comparison++ && i < size; i++)
+    for (int i = 0; ++this->comparison && i < size; i++)
     {
         arr[i] = resArr[i];
     }
@@ -120,7 +120,7 @@ void RadixSort::countSortWithComparisonCount(int *arr, int size, int digit)
 void RadixSort::radixSortWithComparisonCount(int *arr, int size)
 {
     int max = getMaxWithComparisonCount(arr, size);
-    for (int digit = 1; this->comparison++ && max / digit > 0; digit *= 10)
+    for (int digit = 1; ++this->comparison && max / digit > 0; digit *= 10)
     {
         countSortWithComparisonCount(arr, size, digit);
     }
