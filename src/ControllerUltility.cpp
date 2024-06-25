@@ -95,6 +95,19 @@ void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algor
         exit(-1);
     }
 }
+void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char* argv[])
+{
+    if (algorithmParam1 == SortingAlgorithm::NONE)
+    {
+        printPrototypes();
+        exit(-1);
+    }
+    if (inputOrderParam == InputOrder::NONE && fileName == "" && size == 0)
+    {
+        printPrototypes();
+        exit(-1);
+    }
+}
 void printPrototypes()
 {
     cout << "your usage(parameters) is wrong\n";

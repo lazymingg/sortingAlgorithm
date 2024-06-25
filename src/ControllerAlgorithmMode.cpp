@@ -162,6 +162,11 @@ void ControllerAlgorithmMode::setData()
 /*----------------------Constructor and Destructor----------------------*/
 ControllerAlgorithmMode::ControllerAlgorithmMode(int argc, char *argv[])
 {
+    if (argc < 4)
+    {
+        printPrototypes();
+        exit(-1);
+    }
     if (isDigit(argv[3]))
     {
         this->size = atoi(argv[3]);

@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/CountingSort.h"
+#include "../../include/sortHeader/counting-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>

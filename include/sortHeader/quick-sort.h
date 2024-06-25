@@ -7,7 +7,7 @@ public:
     QuickSort(int *arr, int n);
     ~QuickSort();
 
-    int64_t getComparison();
+    uint64_t getComparison();
     double getRunningTime();
 
 private:

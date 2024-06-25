@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/ShellSort.h"
+#include "../../include/sortHeader/shell-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>

@@ -48,4 +48,5 @@ string outputParameterToString(OutputParameter param);
 void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char *argv[]);
 void printParameterInfo();
 void printPrototypes();
+void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char* argv[]);
 #endif //CONTROLLER_COMPARISON_MODE_H

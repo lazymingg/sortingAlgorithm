@@ -1,4 +1,4 @@
-#include "../../include/sortHeader/BubbleSort.h"
+#include "../../include/sortHeader/bubble-sort.h"
 #include <iostream>
 #include <chrono>
 #include <algorithm>

@@ -162,6 +162,11 @@ void ControllerComparisonMode::setData()
 /*----------------------Constructor and Destructor----------------------*/
 ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
 {
+    if (argc < 5)
+    {
+        printPrototypes();
+        exit(-1);
+    }
     if (isDigit(argv[4]))
     {
         this->size = atoi(argv[4]);
@@ -189,7 +194,7 @@ ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
         setData();
     }
     //check parameters
-    handleParameters(this->algorithmParam1, this->algorithmParam2, this->inputOrderParam, this->outputParam, this->fileName, this->size, argv);
+    handleParametersCommparisonMode(this->algorithmParam1, this->algorithmParam2, this->inputOrderParam, this->outputParam, this->fileName, this->size, argv);
 }
 
 ControllerComparisonMode::~ControllerComparisonMode()
@@ -372,7 +377,7 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
         cout << sortingAlgorithmToString(this->algorithmParam2) << " ";
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
     }
-    else if (outputParam == OutputParameter::BOTH)
+    else if (outputParam == OutputParameter::BOTH || outputParam == OutputParameter::NONE)
     {
         cout << "Running Time : ";
         cout << sortingAlgorithmToString(this->algorithmParam1) << " " ;
