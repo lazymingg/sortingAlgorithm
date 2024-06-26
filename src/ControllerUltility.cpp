@@ -168,7 +168,7 @@ void printParameterInfo()
     cout << "   -both: Both running time and number of comparisons\n\n";
 }
 
-// ---------------------------------getter of controller---------------------------------//
+// ---------------------------------setter of controller---------------------------------//
 void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, char *argv)
 {
     if (strcmp(argv, "selection-sort") == 0)
@@ -331,4 +331,18 @@ void setData(const std::string &fileName, InputOrder inputOrderParam, int size, 
         revData = GenerateReverseData(size);
         break;
     }
+}
+void writeFile(const std::string &fileName, int *data, int size)
+{
+    std::ofstream file(fileName);
+    if (!file.is_open()) {
+        std::cout << "Could not open file for writing" << std::endl;
+        return;
+    }
+    file << size << std::endl;
+    for (int i = 0; i < size; ++i) {
+        file << data[i] << " ";
+    }
+    file << std::endl;
+    file.close();
 }

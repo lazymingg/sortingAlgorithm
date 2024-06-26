@@ -24,9 +24,16 @@ private:
     int* sortedData = NULL;
     int* revData = NULL;
 
+    int* fileDataResult = NULL;
+    int* randomDataResult = NULL;
+    int* nsortedDataResult = NULL;
+    int* sortedDataResult = NULL;
+    int* revDataResult = NULL;
+    int *result = NULL;
+    
     double getAlgorithmRunnningTime(SortingAlgorithm &algorithmParam, int* dataType, int size);
     int64_t getAlgorithmComparisons(SortingAlgorithm &algorithmParam, int* dataType, int size);
-    
+
     void runSort(int* dataType, int size);
 };
 
