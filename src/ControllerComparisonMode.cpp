@@ -142,6 +142,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     //     delete sort;
     //     return time;
     // }
+
     case SortingAlgorithm::FLASH_SORT:
     {
         FlashSort *sort = new FlashSort(dataType, size);
@@ -178,6 +179,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }

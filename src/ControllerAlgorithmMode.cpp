@@ -131,6 +131,14 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
         delete sort;
         return time;
     }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
+        double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
+        delete sort;
+        return time;
+    }
     // case SortingAlgorithm::COUNTING_SORT:
     // {
     //     CountingSort *sort = new CountingSort(dataType, size);
@@ -216,6 +224,14 @@ int64_t ControllerAlgorithmMode::getAlgorithmComparisons(SortingAlgorithm &algor
     case SortingAlgorithm::RADIX_SORT:
     {
         RadixSort *sort = new RadixSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
+        delete sort;
+        return comparison;
+    }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
         int64_t comparison = sort->getComparison();
         coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
