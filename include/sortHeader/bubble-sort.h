@@ -8,7 +8,9 @@ public:
     ~BubbleSort();
     int64_t getComparison();
     double getRunningTime();
-
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 private:
     void BubbleSortRunningTimeCount(int *arr, int n);
     void BubbleSortComparisonCount(int *arr, int n);

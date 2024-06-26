@@ -8,7 +8,9 @@ public:
     ~InsertionSort();
     int64_t getComparison();
     double getRunningTime();
-
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 private:
     void insertionSortRunningTimeCount(int *arr, int n);
     void insertionSortComparisonCount(int *arr, int n);

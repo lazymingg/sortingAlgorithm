@@ -8,7 +8,9 @@ public:
     ~HeapSort();
     int64_t getComparison();
     double getRunningTime();
-
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 private:
     void heapify(int *arr, int current, int size);
     void heapSort(int *arr, int size);

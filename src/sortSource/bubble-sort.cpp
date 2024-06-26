@@ -63,3 +63,16 @@ double BubbleSort::getRunningTime()
     chrono::duration<double, milli> duration = end - start;
     return duration.count();
 }
+
+int* BubbleSort::getTempArr()
+{
+    return this->tempArr;
+}
+int* BubbleSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int BubbleSort::getSize()
+{
+    return this->size;
+}

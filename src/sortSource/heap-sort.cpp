@@ -110,3 +110,15 @@ double HeapSort::getRunningTime()
     this->runningTime = duration.count();
     return this->runningTime;
 }
+int* HeapSort::getTempArr()
+{
+    return this->tempArr;
+}
+int* HeapSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int HeapSort::getSize()
+{
+    return this->size;
+}

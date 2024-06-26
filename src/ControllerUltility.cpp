@@ -167,3 +167,168 @@ void printParameterInfo()
     cout << "   -comp: Number of comparisons\n";
     cout << "   -both: Both running time and number of comparisons\n\n";
 }
+
+// ---------------------------------getter of controller---------------------------------//
+void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, char *argv)
+{
+    if (strcmp(argv, "selection-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::SELECTION_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::SELECTION_SORT;
+    }
+    else if (strcmp(argv, "insertion-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::INSERTION_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::INSERTION_SORT;
+    }
+    else if (strcmp(argv, "shell-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::SHELL_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::SHELL_SORT;
+    }
+    else if (strcmp(argv, "bubble-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::BUBBLE_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::BUBBLE_SORT;
+    }
+    else if (strcmp(argv, "heap-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::HEAP_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::HEAP_SORT;
+    }
+    else if (strcmp(argv, "merge-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::MERGE_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::MERGE_SORT;
+    }
+    else if (strcmp(argv, "quick-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::QUICK_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::QUICK_SORT;
+    }
+    else if (strcmp(argv, "radix-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::RADIX_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::RADIX_SORT;
+    }
+    else if (strcmp(argv, "counting-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::COUNTING_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::COUNTING_SORT;
+    }
+    else if (strcmp(argv, "flash-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::FLASH_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::FLASH_SORT;
+    }
+}
+
+void setOutputParameter(OutputParameter &outputParam, char *argv)
+{
+    if (strcmp(argv, "-time") == 0)
+    {
+        outputParam = OutputParameter::TIME;
+    }
+    else if (strcmp(argv, "-comp") == 0)
+    {
+        outputParam = OutputParameter::COMP;
+    }
+    else if (strcmp(argv, "-both") == 0)
+    {
+        outputParam = OutputParameter::BOTH;
+    }
+}
+
+void setInputOrder(InputOrder &inputOrderParam, char *argv)
+{
+    if (strcmp(argv, "-rand") == 0)
+    {
+        inputOrderParam = InputOrder::RAND;
+    }
+    else if (strcmp(argv, "-nsorted") == 0)
+    {
+        inputOrderParam = InputOrder::NSORTED;
+    }
+    else if (strcmp(argv, "-sorted") == 0)
+    {
+        inputOrderParam = InputOrder::SORTED;
+    }
+    else if (strcmp(argv, "-rev") == 0)
+    {
+        inputOrderParam = InputOrder::REV;
+    }
+}
+
+int* readFile(const std::string &fileName, int &size)
+{
+    std::ifstream file(fileName);
+    if (!file.is_open())
+    {
+        std::cout << "File not found" << std::endl;
+        return nullptr;
+    }
+    std::vector<int> v;
+    int num;
+    while (file >> num)
+    {
+        v.push_back(num);
+    }
+    size = v.size();
+    int *arr = new int[v.size()];
+    for (int i = 0; i < v.size(); i++)
+    {
+        arr[i] = v[i];
+    }
+    return arr;
+}
+
+void setData(const std::string &fileName, InputOrder inputOrderParam, int size, int* &fileData, int* &randomData, int* &nsortedData, int* &sortedData, int* &revData)
+{
+    if (!fileName.empty())
+    {
+        fileData = readFile(fileName, size);
+    }
+    switch (inputOrderParam)
+    {
+    case InputOrder::RAND:
+        randomData = GenerateRandomData(size);
+        break;
+    case InputOrder::NSORTED:
+        nsortedData = GenerateNearlySortedData(size);
+        break;
+    case InputOrder::SORTED:
+        sortedData = GenerateSortedData(size);
+        break;
+    case InputOrder::REV:
+        revData = GenerateReverseData(size);
+        break;
+
+    case InputOrder::NONE:
+        // do all
+        randomData = GenerateRandomData(size);
+        nsortedData = GenerateNearlySortedData(size);
+        sortedData = GenerateSortedData(size);
+        revData = GenerateReverseData(size);
+        break;
+    }
+}

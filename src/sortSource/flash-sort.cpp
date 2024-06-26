@@ -156,3 +156,15 @@ double FlashSort::getRunningTime()
     this->runningTime = duration.count();
     return this->runningTime;
 }
+int* FlashSort::getTempArr()
+{
+    return this->tempArr;
+}
+int* FlashSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int FlashSort::getSize()
+{
+    return this->size;
+}

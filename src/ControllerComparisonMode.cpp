@@ -1,171 +1,5 @@
 #include "../include/ControllerComparisonMode.h"
 
-/*--------------------file Handling Funtion------------------*/
-int *ControllerComparisonMode::readFile()
-{
-    ifstream file(fileName);
-    if (!file.is_open())
-    {
-        cout << "File not found" << endl;
-        return nullptr;
-    }
-    vector<int> v;
-    int num;
-    while (file >> num)
-    {
-        v.push_back(num);
-    }
-    this->size = v.size();
-    int *arr = new int[v.size()];
-    for (int i = 0; i < v.size(); i++)
-    {
-        arr[i] = v[i];
-    }
-    return arr;
-}
-
-/*----------------------Setter Funtion----------------------*/
-void ControllerComparisonMode::setAlgorithm(char *argv)
-{
-    if (strcmp(argv, "selection-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::SELECTION_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::SELECTION_SORT;
-    }
-    else if (strcmp(argv, "insertion-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::INSERTION_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::INSERTION_SORT;
-    }
-    else if (strcmp(argv, "shell-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::SHELL_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::SHELL_SORT;
-    }
-    else if (strcmp(argv, "bubble-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::BUBBLE_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::BUBBLE_SORT;
-    }
-    else if (strcmp(argv, "heap-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::HEAP_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::HEAP_SORT;
-    }
-    else if (strcmp(argv, "merge-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::MERGE_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::MERGE_SORT;
-    }
-    else if (strcmp(argv, "quick-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::QUICK_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::QUICK_SORT;
-    }
-    else if (strcmp(argv, "radix-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::RADIX_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::RADIX_SORT;
-    }
-    else if (strcmp(argv, "counting-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::COUNTING_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::COUNTING_SORT;
-    }
-    else if (strcmp(argv, "flash-sort") == 0)
-    {
-        if (this->algorithmParam1 != SortingAlgorithm::NONE)
-            this->algorithmParam2 = SortingAlgorithm::FLASH_SORT;
-        else
-            this->algorithmParam1 = SortingAlgorithm::FLASH_SORT;
-    }
-}
-
-void ControllerComparisonMode::setOutputParameter(char *argv)
-{
-    if (strcmp(argv, "-time") == 0)
-    {
-        this->outputParam = OutputParameter::TIME;
-    }
-    else if (strcmp(argv, "-comp") == 0)
-    {
-        this->outputParam = OutputParameter::COMP;
-    }
-    else if (strcmp(argv, "-both") == 0)
-    {
-        this->outputParam = OutputParameter::BOTH;
-    }
-}
-
-void ControllerComparisonMode::setInputOrder(char *argv)
-{
-    if (strcmp(argv, "-rand") == 0)
-    {
-        inputOrderParam = InputOrder::RAND;
-    }
-    else if (strcmp(argv, "-nsorted") == 0)
-    {
-        inputOrderParam = InputOrder::NSORTED;
-    }
-    else if (strcmp(argv, "-sorted") == 0)
-    {
-        inputOrderParam = InputOrder::SORTED;
-    }
-    else if (strcmp(argv, "-rev") == 0)
-    {
-        inputOrderParam = InputOrder::REV;
-    }
-}
-
-void ControllerComparisonMode::setData()
-{
-    if (fileName != "")
-    {
-        fileData = readFile();
-    }
-    switch (this->inputOrderParam)
-    {
-    case InputOrder::RAND:
-        this->randomData = GenerateRandomData(this->size);
-        break;
-    case InputOrder::NSORTED:
-        this->nsortedData = GenerateNearlySortedData(this->size);
-        break;
-    case InputOrder::SORTED:
-        this->sortedData = GenerateSortedData(this->size);
-        break;
-    case InputOrder::REV:
-        this->revData = GenerateReverseData(this->size);
-        break;
-
-    case InputOrder::NONE:
-        // do all
-        this->randomData = GenerateRandomData(this->size);
-        this->nsortedData = GenerateNearlySortedData(this->size);
-        this->sortedData = GenerateSortedData(this->size);
-        this->revData = GenerateReverseData(this->size);
-        break;
-    }
-}
-
 /*----------------------Constructor and Destructor----------------------*/
 ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
 {
@@ -185,20 +19,23 @@ ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
     for (int i = 2; i < argc; i++)
     {
         // Define algorithm
-        setAlgorithm(argv[i]);
+        // void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, char *argv);
+        setAlgorithm(this->algorithmParam1, this->algorithmParam2, argv[i]);
         // Define output parameter
-        setOutputParameter(argv[i]);
+        // void setOutputParameter(OutputParameter &outputParam, char *argv);
+        setOutputParameter(this->outputParam, argv[i]);
         // Define input order
-        setInputOrder(argv[i]);
+        // void setInputOrder(InputOrder &inputOrderParam, char *argv);
+        setInputOrder(this->inputOrderParam, argv[i]);
     }
     // set up data for sorting
     if (fileName != "")
     {
-        fileData = readFile();
+        fileData = readFile(fileName, size);
     }
     else
     {
-        setData();
+        setData(fileName, inputOrderParam, size, fileData, randomData, nsortedData, sortedData, revData);
     }
     //check parameters
     handleParametersCommparisonMode(this->algorithmParam1, this->algorithmParam2, this->inputOrderParam, this->outputParam, this->fileName, this->size, argv);

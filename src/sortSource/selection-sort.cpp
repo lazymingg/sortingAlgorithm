@@ -67,3 +67,15 @@ int64_t SelectionSort::getComparison()
     selectionSortComparionCount(this->tempArr, this->size);
     return this->comparison;
 }
+int *SelectionSort::getTempArr()
+{
+    return this->tempArr;
+}
+int *SelectionSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int SelectionSort::getSize()
+{
+    return this->size;
+}

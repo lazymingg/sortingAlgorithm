@@ -13,7 +13,9 @@ public:
     ~FlashSort();
     int64_t getComparison();
     double getRunningTime();
-
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 private:
     void flashSortRunningTimeCount(int n, int *a);
     void flashSortComparisonCount(int n, int *a);

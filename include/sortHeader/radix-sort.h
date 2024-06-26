@@ -11,6 +11,10 @@ public:
     ~RadixSort();
     int64_t getComparison();
     double getRunningTime();
+    
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 
 private:
     void radixSort(int *arr, int n);

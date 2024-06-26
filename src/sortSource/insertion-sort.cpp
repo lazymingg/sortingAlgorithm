@@ -63,3 +63,15 @@ double InsertionSort::getRunningTime()
     this->runningTime = duration.count();
     return this->runningTime;
 }
+int* InsertionSort::getTempArr()
+{
+    return this->tempArr;
+}
+int* InsertionSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int InsertionSort::getSize()
+{
+    return this->size;
+}

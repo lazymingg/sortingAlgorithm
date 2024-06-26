@@ -10,6 +10,13 @@ public:
     void selectionSortComparionCount(int *arr, int n);
     int64_t getComparison();
     double getRunningTime();
+    
+    // get tempArr
+    int *getTempArr();
+    // get tempArr2
+    int *getTempArr2();
+    // get size
+    int getSize();
 
 private:
     double runningTime = 0;

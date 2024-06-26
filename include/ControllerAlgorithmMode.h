@@ -27,13 +27,6 @@ private:
     int64_t getAlgorithmComparisons(SortingAlgorithm &algorithmParam, int *dataType, int size);
     double getAlgorithmRunnningTime(SortingAlgorithm &algorithmParam, int *dataType, int size);
     void runSort(int *dataType, int size);
-
-    void setData();
-    void setAlgorithm(char *argv);
-    void setOutputParameter(char *argv);
-    void setInputOrder(char *argv);
-
-    int* readFile();
 };
 
 #endif //CONTROLLER_H

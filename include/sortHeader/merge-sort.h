@@ -8,7 +8,9 @@ public:
     ~MergeSort();
     int64_t getComparison();
     double getRunningTime();
-
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 private:
     void merge(int *arr, int l, int m, int r);
     void mergeSort(int *arr, int l, int r);

@@ -137,3 +137,15 @@ double QuickSort::getRunningTime()
     this->runningTime = duration.count();
     return this->runningTime;
 }
+int *QuickSort::getTempArr()
+{
+    return this->tempArr;
+}
+int *QuickSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int QuickSort::getSize()
+{
+    return this->size;
+}

@@ -167,3 +167,15 @@ double MergeSort::getRunningTime()
     this->runningTime = duration.count();
     return this->runningTime;
 }
+int *MergeSort::getTempArr()
+{
+    return this->tempArr;
+}
+int *MergeSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int MergeSort::getSize()
+{
+    return this->size;
+}

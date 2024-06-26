@@ -9,6 +9,9 @@ public:
 
     uint64_t getComparison();
     double getRunningTime();
+    int* getTempArr();
+    int* getTempArr2();
+    int getSize();
 
 private:
     void quickSort(int *arr, int left, int right);
