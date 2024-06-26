@@ -22,30 +22,26 @@ InsertionSort::~InsertionSort()
 }
 void InsertionSort::insertionSortRunningTimeCount(int *arr, int n)
 {
-    for (int i = 1; i < n; i++)
+    int i, j, key;
+    for (i = 1; i < n; i++)
     {
-        int key = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
+        key = arr[i];
+        for (j = i; j > 0 && key < arr[j - 1]; j--)
+            arr[j] = arr[j - 1];
+
+        arr[j] = key;
     }
 }
 void InsertionSort::insertionSortComparisonCount(int *arr, int n)
 {
-    for (int i = 1; ++this->comparison && i < n; i++)
+    int i, j, key;
+    for (i = 1; ++this->comparison && i < n; i++)
     {
-        int key = arr[i];
-        int j = i - 1;
-        while (++this->comparison && j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
+        key = arr[i];
+        for (j = i; ++this->comparison && j > 0 && ++this->comparison && key < arr[j - 1]; j--)
+            arr[j] = arr[j - 1];
+
+        arr[j] = key;
     }
 }
 int64_t InsertionSort::getComparison()
