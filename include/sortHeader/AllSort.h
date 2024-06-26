@@ -9,6 +9,7 @@
 #include "quick-sort.h"
 #include "counting-sort.h"
 #include "radix-sort.h"
+#include "flash-sort.h"
 #include "heap-sort.h"
 
 // Add any other sort headers you have in the directory

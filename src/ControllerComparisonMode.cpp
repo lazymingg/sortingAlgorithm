@@ -90,6 +90,13 @@ void ControllerComparisonMode::setAlgorithm(char *argv)
         else
             this->algorithmParam1 = SortingAlgorithm::COUNTING_SORT;
     }
+    else if (strcmp(argv, "flash-sort") == 0)
+    {
+        if (this->algorithmParam1 != SortingAlgorithm::NONE)
+            this->algorithmParam2 = SortingAlgorithm::FLASH_SORT;
+        else
+            this->algorithmParam1 = SortingAlgorithm::FLASH_SORT;
+    }
 }
 
 void ControllerComparisonMode::setOutputParameter(char *argv)
@@ -280,6 +287,13 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     //     delete sort;
     //     return time;
     // }
+    case SortingAlgorithm::FLASH_SORT:
+    {
+        FlashSort *sort = new FlashSort(dataType, size);
+        double time =  sort->getRunningTime();
+        delete sort;
+        return time;
+    }
     default:
         return 0;
     }
@@ -351,6 +365,13 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     //     delete sort;
     //     return comparison;
     // }
+    case SortingAlgorithm::FLASH_SORT:
+    {
+        FlashSort *sort = new FlashSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        delete sort;
+        return comparison;
+    }
     default:
         return 0;
     }

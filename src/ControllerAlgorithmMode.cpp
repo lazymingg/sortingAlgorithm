@@ -90,6 +90,13 @@ void ControllerAlgorithmMode::setAlgorithm(char *argv)
         else
             this->algorithmParam1 = SortingAlgorithm::COUNTING_SORT;
     }
+    else if (strcmp(argv, "flash-sort") == 0)
+    {
+        if (this->algorithmParam1 != SortingAlgorithm::NONE)
+            this->algorithmParam2 = SortingAlgorithm::FLASH_SORT;
+        else
+            this->algorithmParam1 = SortingAlgorithm::FLASH_SORT;
+    }
 }
 
 void ControllerAlgorithmMode::setOutputParameter(char *argv)
@@ -173,7 +180,13 @@ ControllerAlgorithmMode::ControllerAlgorithmMode(int argc, char *argv[])
     }
     else
     {
-        this->fileName = argv[3];
+        if (argv[3][0] != '-')
+            this->fileName = argv[3];
+        else
+        {
+            printPrototypes();
+            exit(-1);
+        }
     }
     for (int i = 2; i < argc; i++)
     {
@@ -212,7 +225,6 @@ ControllerAlgorithmMode::~ControllerAlgorithmMode()
         delete[] revData;
 }
 
-/*----------------------Run Sort Function----------------------*/
 /*----------------------Algorithm Running Time and Comparisons Function----------------------*/
 double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algorithmParam, int *dataType, int size)
 {
@@ -281,6 +293,13 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     //     delete sort;
     //     return time;
     // }
+    case SortingAlgorithm::FLASH_SORT:
+    {
+        FlashSort *sort = new FlashSort(dataType, size);
+        double time =  sort->getRunningTime();
+        delete sort;
+        return time;
+    }
     default:
         return 0;
     }
@@ -353,6 +372,13 @@ int64_t ControllerAlgorithmMode::getAlgorithmComparisons(SortingAlgorithm &algor
     //     delete sort;
     //     return comparison;
     // }
+    case SortingAlgorithm::FLASH_SORT:
+    {
+        FlashSort *sort = new FlashSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        delete sort;
+        return comparison;
+    }
     default:
         return 0;
     }

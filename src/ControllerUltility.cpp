@@ -34,6 +34,8 @@ string sortingAlgorithmToString(SortingAlgorithm algo)
         return "Radix Sort";
     case SortingAlgorithm::COUNTING_SORT:
         return "Counting Sort";
+    case SortingAlgorithm::FLASH_SORT:
+        return "Flash Sort";
     case SortingAlgorithm::NONE:
         return "None";
     default:
