@@ -75,13 +75,13 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
         delete sort;
         return time;
     }
-    // case SortingAlgorithm::SHELL_SORT:
-    // {
-    //     ShellSort *sort = new ShellSort(dataType, size);
-    //     double time =  sort->getRunningTime();
-    //     delete sort;
-    //     return time;
-    // }
+    case SortingAlgorithm::SHELL_SORT:
+    {
+        ShellSort *sort = new ShellSort(dataType, size);
+        double time =  sort->getRunningTime();
+        delete sort;
+        return time;
+    }
     case SortingAlgorithm::BUBBLE_SORT:
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
@@ -153,13 +153,13 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
         delete sort;
         return comparison;
     }
-    // case SortingAlgorithm::SHELL_SORT:
-    // {
-    //     ShellSort *sort = new ShellSort(dataType, size);
-    //     int64_t comparison = sort->getComparison();
-    //     delete sort;
-    //     return comparison;
-    // }
+    case SortingAlgorithm::SHELL_SORT:
+    {
+        ShellSort *sort = new ShellSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        delete sort;
+        return comparison;
+    }
     case SortingAlgorithm::BUBBLE_SORT:
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
