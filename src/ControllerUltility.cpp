@@ -10,6 +10,22 @@ bool isDigit(char *str)
     }
     return true;
 }
+void coppyData(int *data, int *&dataResult, int size)
+{
+    if (dataResult == nullptr)
+    {
+        dataResult = new int[size];
+    }
+    else
+    {
+        delete[] dataResult;
+        dataResult = new int[size];
+    }
+    for (int i = 0; i < size; i++)
+    {
+        dataResult[i] = data[i];
+    }
+}
 
 /*------------------- enum class to string ------------------*/
 string sortingAlgorithmToString(SortingAlgorithm algo)

@@ -56,7 +56,7 @@ double SelectionSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    selectionSortRunningTimeCount(this->tempArr2, this->size);
+    selectionSortRunningTimeCount(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();
@@ -64,7 +64,7 @@ double SelectionSort::getRunningTime()
 }
 int64_t SelectionSort::getComparison()
 {
-    selectionSortComparionCount(this->tempArr, this->size);
+    selectionSortComparionCount(this->tempArr2, this->size);
     return this->comparison;
 }
 int *SelectionSort::getTempArr()

@@ -54,6 +54,8 @@ ControllerComparisonMode::~ControllerComparisonMode()
         delete[] sortedData;
     if (revData != nullptr)
         delete[] revData;
+    if (result != nullptr)
+        delete[] result;
 }
 
 /*----------------------Algorithm Running Time and Comparisons Function----------------------*/
@@ -65,13 +67,15 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         SelectionSort *sort = new SelectionSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
     case SortingAlgorithm::INSERTION_SORT:
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time =  sort->getRunningTime();        
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -79,6 +83,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         ShellSort *sort = new ShellSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -86,6 +91,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -93,6 +99,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         HeapSort *sort = new HeapSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -100,13 +107,15 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         MergeSort *sort = new MergeSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
     case SortingAlgorithm::QUICK_SORT:
     {
         QuickSort *sort = new QuickSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -114,6 +123,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         RadixSort *sort = new RadixSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -121,6 +131,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     // {
     //     CountingSort *sort = new CountingSort(dataType, size);
     //     double time =  sort->getRunningTime();
+    // coppyData(this->result, sort->getTempArr(), size);
     //     delete sort;
     //     return time;
     // }
@@ -128,6 +139,7 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
     {
         FlashSort *sort = new FlashSort(dataType, size);
         double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
         delete sort;
         return time;
     }
@@ -143,6 +155,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         SelectionSort *sort = new SelectionSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -150,6 +163,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -157,6 +171,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         ShellSort *sort = new ShellSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -164,6 +179,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -171,6 +187,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         HeapSort *sort = new HeapSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -178,6 +195,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         MergeSort *sort = new MergeSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -185,6 +203,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         QuickSort *sort = new QuickSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -192,6 +211,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         RadixSort *sort = new RadixSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -199,6 +219,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     // {
     //     CountingSort *sort = new CountingSort(dataType, size);
     //     int64_t comparison = sort->getComparison();
+    // coppyData(this->result, sort->getTempArr2(), size);
     //     delete sort;
     //     return comparison;
     // }
@@ -206,6 +227,7 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
     {
         FlashSort *sort = new FlashSort(dataType, size);
         int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
         delete sort;
         return comparison;
     }
@@ -294,5 +316,71 @@ void ControllerComparisonMode::run()
         cout << "Reverse Data: " << endl;
         runSort(revData, size);
         cout << "------------------------------------" << endl;
+    }
+    writingFile();
+}
+void ControllerComparisonMode::writingFile()
+{
+    //command 1 and command 2 run sort and write down the sorted array to the "output.txt" file
+    //command 2 and command 5 run sort and write down the generated input to the "input.txt" file
+    //command 3 write down all four generated input:
+    // – "input_1.txt": random order data
+    // – "input_2.txt": nearly sorted data
+    // – "input_3.txt": sorted data
+    // – "input_4.txt": reversed data
+    // The file format (for both input and output files) is as follows:
+    // • 1
+    // st line: an integer n, indicating the number of elements in the input data
+    // • 2
+    // nd line: n integers, separated by a single space
+
+    // case command 1 and 2
+    // if (InputOrder::NONE != this->inputOrderParam)
+    // {
+    //     writeFile("output.txt", result, size);
+    // }
+    // // input of command  2 and 3
+    // if (fileName != "")
+    // {
+    //     switch (inputOrderParam)
+    //     {
+    //     case InputOrder::RAND:
+    //         writeFile("input.txt", randomData, size);
+    //         break;
+    //     case InputOrder::NSORTED:
+    //         writeFile("input.txt", nsortedData, size);
+    //         break;
+    //     case InputOrder::SORTED:
+    //         writeFile("input.txt", sortedData, size);
+    //         break;
+    //     case InputOrder::REV:
+    //         writeFile("input.txt", revData, size);
+    //         break;
+    //     default:
+    //         writeFile("input_1.txt", randomData, size);
+    //         writeFile("input_2.txt", nsortedData, size);
+    //         writeFile("input_3.txt", sortedData, size);
+    //         writeFile("input_4.txt", revData, size);
+    //         break;
+    //     }
+    // }
+    //case command 5
+    if (fileName == "" && this->inputOrderParam != InputOrder::NONE)
+    {
+        switch (this->inputOrderParam)
+        {
+        case InputOrder::RAND:
+            writeFile("input.txt", randomData, size);
+            break;
+        case InputOrder::NSORTED:
+            writeFile("input.txt", nsortedData, size);
+            break;
+        case InputOrder::SORTED:
+            writeFile("input.txt", sortedData, size);
+            break;
+        case InputOrder::REV:
+            writeFile("input.txt", revData, size);
+            break;
+        }
     }
 }

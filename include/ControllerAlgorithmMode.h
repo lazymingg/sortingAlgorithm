@@ -30,10 +30,11 @@ private:
     int* sortedDataResult = NULL;
     int* revDataResult = NULL;
     int* result = NULL;
-    
+
     int64_t getAlgorithmComparisons(SortingAlgorithm &algorithmParam, int *dataType, int size);
     double getAlgorithmRunnningTime(SortingAlgorithm &algorithmParam, int *dataType, int size);
     void runSort(int *dataType, int size);
+    void writingFile();
 };
 
 #endif //CONTROLLER_H

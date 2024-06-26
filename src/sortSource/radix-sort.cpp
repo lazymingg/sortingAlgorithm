@@ -129,16 +129,28 @@ void RadixSort::radixSortWithComparisonCount(int *arr, int size)
 int64_t RadixSort::getComparison()
 {
     this->comparison = 0;
-    radixSortWithComparisonCount(this->tempArr, this->size);
+    radixSortWithComparisonCount(this->tempArr2, this->size);
     return this->comparison;
 }
 
 double RadixSort::getRunningTime()
 {
     auto start = chrono::high_resolution_clock::now();
-    radixSort(this->tempArr2, this->size);
+    radixSort(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();
     return this->runningTime;
+}
+int *RadixSort::getTempArr()
+{
+    return this->tempArr;
+}
+int *RadixSort::getTempArr2()
+{
+    return this->tempArr2;
+}
+int RadixSort::getSize()
+{
+    return this->size;
 }

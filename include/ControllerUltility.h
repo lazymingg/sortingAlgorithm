@@ -56,5 +56,6 @@ void writeFile(const std::string &fileName, int *data, int size);
 void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char *argv[]);
 void printParameterInfo();
 void printPrototypes();
+void coppyData(int *data, int *&dataResult, int size);
 void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char* argv[]);
 #endif //CONTROLLER_COMPARISON_MODE_H

@@ -25,6 +25,7 @@ void swap(int *x, int *y)
     *x = *y;
     *y = tmp;
 }
+
 void FlashSort::flashSortRunningTimeCount(int n, int *a)
 {
     int min_val = a[0], max = 0, m = int(0.45 * n);

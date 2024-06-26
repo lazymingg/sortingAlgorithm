@@ -124,14 +124,14 @@ void QuickSort::quickSortWithComparisonCount(int *arr, int left, int right)
 
 uint64_t QuickSort::getComparison()
 {
-    quickSortWithComparisonCount(this->tempArr, 0, this->size - 1);
+    quickSortWithComparisonCount(this->tempArr2, 0, this->size - 1);
     return this->comparison;
 }
 double QuickSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    quickSort(this->tempArr2, 0, this->size - 1);
+    quickSort(this->tempArr, 0, this->size - 1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();
