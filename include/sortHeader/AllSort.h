@@ -4,6 +4,7 @@
 #include "shell-sort.h"
 #include "bubble-sort.h"
 #include "insertion-sort.h"
+#include "binary-insertion-sort.h"
 #include "selection-sort.h"
 #include "merge-sort.h"
 #include "quick-sort.h"

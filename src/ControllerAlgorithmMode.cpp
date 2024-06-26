@@ -68,14 +68,21 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     case SortingAlgorithm::SELECTION_SORT:
     {
         SelectionSort *sort = new SelectionSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
     case SortingAlgorithm::INSERTION_SORT:
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
+        delete sort;
+        return time;
+    }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
@@ -89,14 +96,14 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     case SortingAlgorithm::BUBBLE_SORT:
     {
         BubbleSort *sort = new BubbleSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
     case SortingAlgorithm::HEAP_SORT:
     {
         HeapSort *sort = new HeapSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
@@ -110,14 +117,14 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     case SortingAlgorithm::QUICK_SORT:
     {
         QuickSort *sort = new QuickSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
     case SortingAlgorithm::RADIX_SORT:
     {
         RadixSort *sort = new RadixSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
@@ -131,7 +138,7 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     case SortingAlgorithm::FLASH_SORT:
     {
         FlashSort *sort = new FlashSort(dataType, size);
-        double time =  sort->getRunningTime();
+        double time = sort->getRunningTime();
         delete sort;
         return time;
     }
@@ -154,6 +161,13 @@ int64_t ControllerAlgorithmMode::getAlgorithmComparisons(SortingAlgorithm &algor
     case SortingAlgorithm::INSERTION_SORT:
     {
         InsertionSort *sort = new InsertionSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        delete sort;
+        return comparison;
+    }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
         int64_t comparison = sort->getComparison();
         delete sort;
         return comparison;

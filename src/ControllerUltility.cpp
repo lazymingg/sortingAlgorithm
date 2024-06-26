@@ -20,6 +20,8 @@ string sortingAlgorithmToString(SortingAlgorithm algo)
         return "Selection Sort";
     case SortingAlgorithm::INSERTION_SORT:
         return "Insertion Sort";
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+        return "Binary Insertion Sort";
     case SortingAlgorithm::SHELL_SORT:
         return "Shell Sort";
     case SortingAlgorithm::BUBBLE_SORT:
@@ -184,6 +186,13 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
             algorithmParam2 = SortingAlgorithm::INSERTION_SORT;
         else
             algorithmParam1 = SortingAlgorithm::INSERTION_SORT;
+    }
+    else if (strcmp(argv, "binary-insertion-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::BINARY_INSERTION_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::BINARY_INSERTION_SORT;
     }
     else if (strcmp(argv, "shell-sort") == 0)
     {
