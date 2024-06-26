@@ -17,8 +17,10 @@ public:
     int* getTempArr2();
     int getSize();
 private:
+    void insertionSortComparisonCount(int *arr, int n);
     void flashSortRunningTimeCount(int n, int *a);
     void flashSortComparisonCount(int n, int *a);
+    
     double runningTime = 0;
     int64_t comparison = 0;
     int *tempArr = NULL;

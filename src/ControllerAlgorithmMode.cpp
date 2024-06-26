@@ -352,7 +352,7 @@ void ControllerAlgorithmMode::writingFile()
         writeFile("output.txt", result, size);
     }
     // input of command  2 and 3
-    if (fileName != "")
+    if (fileName == "")
     {
         switch (inputOrderParam)
         {

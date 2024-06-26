@@ -97,14 +97,14 @@ void HeapSort::heapSortWithComparisonCount(int *arr, int size)
 
 int64_t HeapSort::getComparison()
 {
-    heapSortWithComparisonCount(this->tempArr, this->size);
+    heapSortWithComparisonCount(this->tempArr2, this->size);
     return this->comparison;
 }
 double HeapSort::getRunningTime()
 {
     // res in miliseconds
     auto start = chrono::high_resolution_clock::now();
-    heapSort(this->tempArr2, this->size);
+    heapSort(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();

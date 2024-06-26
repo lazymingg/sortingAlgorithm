@@ -82,14 +82,14 @@ void BinaryInsertionSort::BinaryInsertionSortComparisonCount(int *arr, int n)
 }
 int64_t BinaryInsertionSort::getComparison()
 {
-    BinaryInsertionSortComparisonCount(this->tempArr, this->size);
+    BinaryInsertionSortComparisonCount(this->tempArr2, this->size);
     return this->comparison;
 }
 double BinaryInsertionSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    BinaryInsertionSortRunningTimeCount(this->tempArr2, this->size);
+    BinaryInsertionSortRunningTimeCount(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();

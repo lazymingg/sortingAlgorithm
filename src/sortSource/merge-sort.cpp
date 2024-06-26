@@ -154,14 +154,14 @@ void MergeSort::mergeSortWithComparisonCount(int *arr, int l, int r)
 
 int64_t MergeSort::getComparison()
 {
-    mergeSortWithComparisonCount(this->tempArr, 0, this->size - 1);
+    mergeSortWithComparisonCount(this->tempArr2, 0, this->size - 1);
     return this->comparison;
 }
 double MergeSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    mergeSort(this->tempArr2, 0, this->size - 1);
+    mergeSort(this->tempArr, 0, this->size - 1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();

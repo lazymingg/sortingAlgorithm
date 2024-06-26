@@ -46,14 +46,14 @@ void InsertionSort::insertionSortComparisonCount(int *arr, int n)
 }
 int64_t InsertionSort::getComparison()
 {
-    insertionSortComparisonCount(this->tempArr, this->size);
+    insertionSortComparisonCount(this->tempArr2, this->size);
     return this->comparison;
 }
 double InsertionSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    insertionSortRunningTimeCount(this->tempArr2, this->size);
+    insertionSortRunningTimeCount(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     this->runningTime = duration.count();

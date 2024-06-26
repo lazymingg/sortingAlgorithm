@@ -50,7 +50,7 @@ void BubbleSort::BubbleSortComparisonCount(int *arr, int n)
 }
 int64_t BubbleSort::getComparison()
 {
-    BubbleSortComparisonCount(this->tempArr, this->size);
+    BubbleSortComparisonCount(this->tempArr2, this->size);
     return this->comparison;
 }
 
@@ -58,7 +58,7 @@ double BubbleSort::getRunningTime()
 {
     // time in mili seconds
     auto start = chrono::high_resolution_clock::now();
-    BubbleSortRunningTimeCount(this->tempArr2, this->size);
+    BubbleSortRunningTimeCount(this->tempArr, this->size);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double, milli> duration = end - start;
     return duration.count();
