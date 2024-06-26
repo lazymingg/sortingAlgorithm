@@ -16,6 +16,7 @@ using namespace std;
 enum class SortingAlgorithm {
     SELECTION_SORT,
     INSERTION_SORT,
+    BINARY_INSERTION_SORT,
     SHELL_SORT,
     BUBBLE_SORT,
     HEAP_SORT,

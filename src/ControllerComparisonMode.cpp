@@ -79,6 +79,13 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
         delete sort;
         return time;
     }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
+        double time =  sort->getRunningTime();
+        delete sort;
+        return time;
+    }
     case SortingAlgorithm::SHELL_SORT:
     {
         ShellSort *sort = new ShellSort(dataType, size);
@@ -164,6 +171,13 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
         InsertionSort *sort = new InsertionSort(dataType, size);
         int64_t comparison = sort->getComparison();
         coppyData(sort->getTempArr2(), this->result, size);
+        delete sort;
+        return comparison;
+    }
+    case SortingAlgorithm::BINARY_INSERTION_SORT:
+    {
+        BinaryInsertionSort *sort = new BinaryInsertionSort(dataType, size);
+        int64_t comparison = sort->getComparison();
         delete sort;
         return comparison;
     }

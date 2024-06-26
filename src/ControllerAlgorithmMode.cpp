@@ -136,6 +136,7 @@ double ControllerAlgorithmMode::getAlgorithmRunnningTime(SortingAlgorithm &algor
     //     CountingSort *sort = new CountingSort(dataType, size);
     //     double time =  sort->getRunningTime();
     // coppyData(sort->getTempArr(), this->result, size);
+        
     //     delete sort;
     //     return time;
     // }
