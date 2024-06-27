@@ -261,6 +261,14 @@ int64_t HidingMode::getAlgorithmComparisons(SortingAlgorithm algorithmParam, int
         delete sort;
         return comparison;
     }
+    case SortingAlgorithm::SHAKER_SORT:
+    {
+        ShakerSort *sort = new ShakerSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
+        delete sort;
+        return comparison;
+    }
     default:
         return 0;
     }
@@ -350,7 +358,13 @@ void HidingMode::runSort(int *dataType, int size)
     cout << sortingAlgorithmToString(SortingAlgorithm::COUNTING_SORT) << " " ;
     cout << HidingMode::getAlgorithmComparisons(SortingAlgorithm::COUNTING_SORT, dataType, size) << endl;
     cout << "------------------------------------" << endl;
-
+    cout << "Running Time : ";
+    cout << sortingAlgorithmToString(SortingAlgorithm::SHAKER_SORT) << " " ;
+    cout << HidingMode::getAlgorithmRunnningTime(SortingAlgorithm::SHAKER_SORT, dataType, size) << endl;
+    cout << "Comparisons : ";
+    cout << sortingAlgorithmToString(SortingAlgorithm::SHAKER_SORT) << " " ;
+    cout << HidingMode::getAlgorithmComparisons(SortingAlgorithm::SHAKER_SORT, dataType, size) << endl;
+    cout << "------------------------------------" << endl;
 }
 
 /*----------------------Run Function----------------------*/
