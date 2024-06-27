@@ -25,6 +25,7 @@ enum class SortingAlgorithm {
     RADIX_SORT,
     COUNTING_SORT,
     FLASH_SORT,
+    SHAKER_SORT,
     NONE
 };
 

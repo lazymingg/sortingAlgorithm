@@ -52,14 +52,13 @@ int get_class_id(int val, int min_val, int max_val, int idx_m)
 
 void FlashSort::flashSortRunningTimeCount(int n, int *a)
 {
+     if (n <= 1) return;
     // tính số lớp cần dùng với công thức m = int(0, 45 * n)
     int min_val = a[0], max_val = a[0], m = int(0.45 * n);
 
     if (m > 1) {
         // là mảng chứa xem mỗi lớp có vi tri cuoi la ở đâu
-        int *l = new int[m];
-        for (int i = 0; i < m; i++)
-            l[i] = 0;
+        int *l = new int[m]();
 
         // tim min, max
         for (int i = 1; i < n; i++)
@@ -75,8 +74,10 @@ void FlashSort::flashSortRunningTimeCount(int n, int *a)
         }
 
         // min = max -> chi co 1 gia tri trong mang => return
-        if (max_val == min_val)
+        if (max_val == min_val) {
+            delete[] l;
             return;
+        }
 
         // tìm xem mỗi lớp có bao nhiêu số
         int idx_m = m - 1;
@@ -86,7 +87,7 @@ void FlashSort::flashSortRunningTimeCount(int n, int *a)
             l[idx]++;
         }
 
-        // gán lại để biết vitri cua của lớp đó ở đâu trong mảng
+        // gán lại để biết vitri cuối cua của lớp đó ở đâu trong mảng
         for (int i = 1; i < m; i++)
         {
             l[i] += l[i - 1];
@@ -112,10 +113,11 @@ void FlashSort::flashSortRunningTimeCount(int n, int *a)
             }
         }
         insertionSortRunningTimeCount(a, n);
+        delete[] l;
+        return;
     }
-    else {
-        insertionSortRunningTimeCount(a, n);
-    }
+
+    insertionSortRunningTimeCount(a, n);
 }
 
 void FlashSort::insertionSortComparisonCount(int *a, int n)
@@ -134,14 +136,12 @@ void FlashSort::insertionSortComparisonCount(int *a, int n)
 }
 void FlashSort::flashSortComparisonCount(int n, int *a)
 {
+     if (++this->comparison && n <= 1) return;
     // tính số lớp cần dùng với công thức m = int(0, 45 * n)
     int min_val = a[0], max_val = a[0], m = int(0.45 * n);
-
     if (++this->comparison && m > 1) {
         // là mảng chứa xem mỗi lớp có vi tri cuoi la ở đâu
-        int *l = new int[m];
-        for (int i = 0; ++this->comparison && i < m; i++)
-            l[i] = 0;
+        int *l = new int[m]();
 
         // tim min, max
         for (int i = 1; ++this->comparison && i < n; i++)
@@ -157,8 +157,10 @@ void FlashSort::flashSortComparisonCount(int n, int *a)
         }
 
         // min = max -> chi co 1 gia tri trong mang => return
-        if (++this->comparison && max_val == min_val)
+        if (++this->comparison && max_val == min_val) {
+            delete[] l;
             return;
+        }
 
         // tìm xem mỗi lớp có bao nhiêu số
         int idx_m = m - 1;
@@ -169,7 +171,7 @@ void FlashSort::flashSortComparisonCount(int n, int *a)
             l[idx]++;
         }
 
-        // gán lại để biết vitri cua của lớp đó ở đâu trong mảng
+        // gán lại để biết vitri cuoi cua của lớp đó ở đâu trong mảng
         for (int i = 1; ++this->comparison && i < m; i++)
         {
             l[i] += l[i - 1];
@@ -191,18 +193,19 @@ void FlashSort::flashSortComparisonCount(int n, int *a)
             {
                 id = get_class_id(tmp, min_val, max_val, m);
                 ++this->comparison;
-                    l[id]--;
+                l[id]--;
                 swap(&tmp, &a[l[id]]);
                 cnt++;
             }
         }
         insertionSortComparisonCount(a, n);
+        delete[] l;
+        return;
     }
-    else {
-        insertionSortComparisonCount(a, n);
-    }
-}
+    
+    insertionSortComparisonCount(a, n);
 
+}
 
 int64_t FlashSort::getComparison()
 {
