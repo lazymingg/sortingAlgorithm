@@ -292,7 +292,6 @@ void ControllerAlgorithmMode::run()
     /////////====================================////////////////
     cout << "=============Parameters:=============" << endl;
     cout << "Algorithm 1: " << sortingAlgorithmToString(this->algorithmParam1) << endl;
-    cout << "Algorithm 2: " << sortingAlgorithmToString(this->algorithmParam2) << endl;
     cout << "Input Order: " << inputOrderToString(this->inputOrderParam) << endl;
     cout << "Output Parameter: " << outputParameterToString(this->outputParam) << endl;
     cout << "Size: " << this->size << endl;

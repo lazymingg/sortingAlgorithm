@@ -310,7 +310,7 @@ int* readFile(const std::string &fileName, int &size)
     if (!file.is_open())
     {
         std::cout << "File not found" << std::endl;
-        return nullptr;
+        exit(-1);
     }
     std::vector<int> v;
     int num;
