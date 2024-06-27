@@ -134,14 +134,14 @@ double ControllerComparisonMode::getAlgorithmRunnningTime(SortingAlgorithm &algo
         delete sort;
         return time;
     }
-    // case SortingAlgorithm::COUNTING_SORT:
-    // {
-    //     CountingSort *sort = new CountingSort(dataType, size);
-    //     double time =  sort->getRunningTime();
-    // coppyData(this->result, sort->getTempArr(), size);
-    //     delete sort;
-    //     return time;
-    // }
+    case SortingAlgorithm::COUNTING_SORT:
+    {
+        CountingSort *sort = new CountingSort(dataType, size);
+        double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
+        delete sort;
+        return time;
+    }
 
     case SortingAlgorithm::FLASH_SORT:
     {
@@ -231,14 +231,14 @@ int64_t ControllerComparisonMode::getAlgorithmComparisons(SortingAlgorithm &algo
         delete sort;
         return comparison;
     }
-    // case SortingAlgorithm::COUNTING_SORT:
-    // {
-    //     CountingSort *sort = new CountingSort(dataType, size);
-    //     int64_t comparison = sort->getComparison();
-    // coppyData(this->result, sort->getTempArr2(), size);
-    //     delete sort;
-    //     return comparison;
-    // }
+    case SortingAlgorithm::COUNTING_SORT:
+    {
+        CountingSort *sort = new CountingSort(dataType, size);
+        int64_t comparison = sort->getComparison();
+        coppyData(sort->getTempArr2(), this->result, size);
+        delete sort;
+        return comparison;
+    }
     case SortingAlgorithm::FLASH_SORT:
     {
         FlashSort *sort = new FlashSort(dataType, size);
