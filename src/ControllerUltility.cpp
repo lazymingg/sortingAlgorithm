@@ -313,12 +313,18 @@ int* readFile(const std::string &fileName, int &size)
         return nullptr;
     }
     std::vector<int> v;
-    int num;
-    while (file >> num)
-    {
+    file >> size;
+    for (int i = 0; i < size; i++) {
+        int num;
+        file >> num;
         v.push_back(num);
     }
-    size = v.size();
+    // int num;
+    // while (file >> num)
+    // {
+    //     v.push_back(num);
+    // }
+    // size = v.size();
     int *arr = new int[v.size()];
     for (int i = 0; i < v.size(); i++)
     {
