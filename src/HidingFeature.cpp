@@ -334,6 +334,13 @@ void HidingMode::runSort(int *dataType, int size)
     cout << sortingAlgorithmToString(SortingAlgorithm::FLASH_SORT) << " " ;
     cout << HidingMode::getAlgorithmComparisons(SortingAlgorithm::FLASH_SORT, dataType, size) << endl;
     cout << "------------------------------------" << endl;
+    cout << "Running Time : ";
+    cout << sortingAlgorithmToString(SortingAlgorithm::COUNTING_SORT) << " " ;
+    cout << HidingMode::getAlgorithmRunnningTime(SortingAlgorithm::COUNTING_SORT, dataType, size) << endl;
+    cout << "Comparisons : ";
+    cout << sortingAlgorithmToString(SortingAlgorithm::COUNTING_SORT) << " " ;
+    cout << HidingMode::getAlgorithmComparisons(SortingAlgorithm::COUNTING_SORT, dataType, size) << endl;
+    cout << "------------------------------------" << endl;
 
 }
 

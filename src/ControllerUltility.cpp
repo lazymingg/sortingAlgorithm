@@ -54,6 +54,8 @@ string sortingAlgorithmToString(SortingAlgorithm algo)
         return "Counting Sort";
     case SortingAlgorithm::FLASH_SORT:
         return "Flash Sort";
+    case SortingAlgorithm::SHAKER_SORT:
+        return "Shaker Sort";
     case SortingAlgorithm::NONE:
         return "None";
     default:
@@ -265,6 +267,13 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
             algorithmParam2 = SortingAlgorithm::FLASH_SORT;
         else
             algorithmParam1 = SortingAlgorithm::FLASH_SORT;
+    }
+     else if (strcmp(argv, "shaker-sort") == 0)
+    {
+        if (algorithmParam1 != SortingAlgorithm::NONE)
+            algorithmParam2 = SortingAlgorithm::SHAKER_SORT;
+        else
+            algorithmParam1 = SortingAlgorithm::SHAKER_SORT;
     }
 }
 
