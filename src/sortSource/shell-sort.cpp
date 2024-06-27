@@ -24,31 +24,34 @@ void ShellSort::ShellSortRunningTimeCount(int *arr, int n)
 {
     int i, j, gap, temp;
 
-    for (gap = n / 2; gap > 0; gap /= 2) {
+    for (gap = n / 2; gap > 0; gap /= 2)
+    {
         for (i = gap; i < n; i++)
+        {
+            temp = arr[i];
 
-        temp = arr[i];
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                arr[j] = arr[j - gap];
 
-        for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
-            arr[j] = arr[j - 1];
-
-        arr[j] = temp;
+            arr[j] = temp;
+        }
     }
 }
 void ShellSort::ShellSortComparisonCount(int *arr, int n)
 {
     int i, j, gap, temp;
 
+    for (gap = n / 2; ++this->comparison && gap > 0; gap /= 2)
+    {
+        for (i = gap; ++this->comparison && i < n; i++) 
+        {
+            temp = arr[i];
 
-    for (gap = n / 2; ++this->comparison && gap > 0; gap /= 2) {
-        for (i = gap; ++this->comparison && i < n; i++)
+            for (j = i; ++this->comparison && j >= gap && ++this->comparison && arr[j - gap] > temp; j -= gap)
+                arr[j] = arr[j - gap];
 
-        temp = arr[i];
-
-        for (j = i; ++this->comparison && j >= gap && ++this->comparison && arr[j - gap] > temp; j -= gap)
-            arr[j] = arr[j - 1];
-
-        arr[j] = temp;
+            arr[j] = temp;
+        }
     }
 }
 int64_t ShellSort::getComparison()
