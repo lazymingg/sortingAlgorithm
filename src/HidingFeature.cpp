@@ -155,6 +155,15 @@ double HidingMode::getAlgorithmRunnningTime(SortingAlgorithm algorithmParam, int
         delete sort;
         return time;
     }
+
+    case SortingAlgorithm::SHAKER_SORT:
+    {
+        ShakerSort *sort = new ShakerSort(dataType, size);
+        double time =  sort->getRunningTime();
+        coppyData(sort->getTempArr(), this->result, size);
+        delete sort;
+        return time;
+    }
     default:
         return 0;
     }
