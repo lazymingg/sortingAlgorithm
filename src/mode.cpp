@@ -11,27 +11,32 @@ void algorithmMode(int argc, char *argv[])
         ControllerAlgorithmMode a(argc, argv);
         a.run();
     }
+
     else if (strcmp(argv[1], "-c") == 0)
     {
         cout << "COMPARISON MODE" << endl;
         ControllerComparisonMode c(argc, argv);
         c.run();
     }
+
     else if (strcmp(argv[1], "-ming") == 0)
     {
         cout << "HIDING MODE" << endl;
         HidingMode c(argc, argv);
         c.run();
     }
+
     if (strcmp(argv[1], "-h") == 0)
     {
         printParameterInfo();
         return;
     } 
+
     if (strcmp(argv[1], "-p") == 0)
     {
         printPrototypes();
         return;
     }
+    
     return;
 }

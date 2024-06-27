@@ -76,18 +76,22 @@ int *GenerateData(int n, int dataType)
 	int *resArr;
 	switch (dataType)
 	{
-	case 0:
-		resArr = GenerateRandomData(n);
-		break;
-	case 1:
-		resArr = GenerateSortedData(n);
-		break;
-	case 2:
-		resArr = GenerateReverseData(n);
-		break;
-	case 3:
-		resArr = GenerateNearlySortedData(n);
-		break;
+		case 0:
+			resArr = GenerateRandomData(n);
+			break;
+			
+		case 1:
+			resArr = GenerateSortedData(n);
+			break;
+
+		case 2:
+			resArr = GenerateReverseData(n);
+			break;
+
+		case 3:
+			resArr = GenerateNearlySortedData(n);
+			break;
 	}
+
 	return resArr;
 }

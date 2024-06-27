@@ -16,11 +16,13 @@ void coppyData(int *data, int *&dataResult, int size)
     {
         dataResult = new int[size];
     }
+
     else
     {
         delete[] dataResult;
         dataResult = new int[size];
     }
+
     for (int i = 0; i < size; i++)
     {
         dataResult[i] = data[i];
@@ -32,34 +34,47 @@ string sortingAlgorithmToString(SortingAlgorithm algo)
 {
     switch (algo)
     {
-    case SortingAlgorithm::SELECTION_SORT:
-        return "Selection Sort";
-    case SortingAlgorithm::INSERTION_SORT:
-        return "Insertion Sort";
-    case SortingAlgorithm::BINARY_INSERTION_SORT:
-        return "Binary Insertion Sort";
-    case SortingAlgorithm::SHELL_SORT:
-        return "Shell Sort";
-    case SortingAlgorithm::BUBBLE_SORT:
-        return "Bubble Sort";
-    case SortingAlgorithm::HEAP_SORT:
-        return "Heap Sort";
-    case SortingAlgorithm::MERGE_SORT:
-        return "Merge Sort";
-    case SortingAlgorithm::QUICK_SORT:
-        return "Quick Sort";
-    case SortingAlgorithm::RADIX_SORT:
-        return "Radix Sort";
-    case SortingAlgorithm::COUNTING_SORT:
-        return "Counting Sort";
-    case SortingAlgorithm::FLASH_SORT:
-        return "Flash Sort";
-    case SortingAlgorithm::SHAKER_SORT:
-        return "Shaker Sort";
-    case SortingAlgorithm::NONE:
-        return "None";
-    default:
-        return "Unknown Algorithm";
+        case SortingAlgorithm::SELECTION_SORT:
+            return "Selection Sort";
+
+        case SortingAlgorithm::INSERTION_SORT:
+            return "Insertion Sort";
+
+        case SortingAlgorithm::BINARY_INSERTION_SORT:
+            return "Binary Insertion Sort";
+
+        case SortingAlgorithm::SHELL_SORT:
+            return "Shell Sort";
+
+        case SortingAlgorithm::BUBBLE_SORT:
+            return "Bubble Sort";
+
+        case SortingAlgorithm::HEAP_SORT:
+            return "Heap Sort";
+
+        case SortingAlgorithm::MERGE_SORT:
+            return "Merge Sort";
+
+        case SortingAlgorithm::QUICK_SORT:
+            return "Quick Sort";
+
+        case SortingAlgorithm::RADIX_SORT:
+            return "Radix Sort";
+
+        case SortingAlgorithm::COUNTING_SORT:
+            return "Counting Sort";
+
+        case SortingAlgorithm::FLASH_SORT:
+            return "Flash Sort";
+
+        case SortingAlgorithm::SHAKER_SORT:
+            return "Shaker Sort";
+
+        case SortingAlgorithm::NONE:
+            return "None";
+
+        default:
+            return "Unknown Algorithm";
     }
 }
 
@@ -67,19 +82,23 @@ string inputOrderToString(InputOrder order)
 {
     switch (order)
     {
-    case InputOrder::RAND:
-        return "Random";
-    case InputOrder::NSORTED:
-        return "Nearly Sorted";
-    case InputOrder::SORTED:
-        return "Sorted";
-    case InputOrder::REV:
-        return "Reversed";
-    case InputOrder::NONE:
-        return "None";
-    default:
-        return "Unknown Order";
-    
+        case InputOrder::RAND:
+            return "Random";
+
+        case InputOrder::NSORTED:
+            return "Nearly Sorted";
+
+        case InputOrder::SORTED:
+            return "Sorted";
+
+        case InputOrder::REV:
+            return "Reversed";
+
+        case InputOrder::NONE:
+            return "None";
+
+        default:
+            return "Unknown Order";
     }
 }
 
@@ -87,16 +106,20 @@ string outputParameterToString(OutputParameter param)
 {
     switch (param)
     {
-    case OutputParameter::TIME:
-        return "Time";
-    case OutputParameter::COMP:
-        return "Comparisons";
-    case OutputParameter::BOTH:
-        return "Both";
-    case OutputParameter::NONE:
-        return "None";
-    default:
-        return "Unknown Parameter";
+        case OutputParameter::TIME:
+            return "Time";
+
+        case OutputParameter::COMP:
+            return "Comparisons";
+
+        case OutputParameter::BOTH:
+            return "Both";
+
+        case OutputParameter::NONE:
+            return "None";
+
+        default:
+            return "Unknown Parameter";
     }
 }
 void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char* argv[])
@@ -106,11 +129,13 @@ void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algor
         printPrototypes();
         exit(-1);
     }
+
     if (inputOrderParam == InputOrder::NONE && fileName == "" && size == 0)
     {
         printPrototypes();
         exit(-1);
     }
+
     if (outputParam == OutputParameter::NONE)
     {
         printPrototypes();
@@ -124,6 +149,7 @@ void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingA
         printPrototypes();
         exit(-1);
     }
+
     if (inputOrderParam == InputOrder::NONE && fileName == "" && size == 0)
     {
         printPrototypes();
@@ -198,6 +224,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::SELECTION_SORT;
     }
+    
     else if (strcmp(argv, "insertion-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -205,6 +232,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::INSERTION_SORT;
     }
+
     else if (strcmp(argv, "binary-insertion-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -212,6 +240,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::BINARY_INSERTION_SORT;
     }
+
     else if (strcmp(argv, "shell-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -219,6 +248,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::SHELL_SORT;
     }
+
     else if (strcmp(argv, "bubble-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -226,6 +256,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::BUBBLE_SORT;
     }
+
     else if (strcmp(argv, "heap-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -233,6 +264,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::HEAP_SORT;
     }
+
     else if (strcmp(argv, "merge-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -240,6 +272,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::MERGE_SORT;
     }
+
     else if (strcmp(argv, "quick-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -247,6 +280,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::QUICK_SORT;
     }
+
     else if (strcmp(argv, "radix-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -254,6 +288,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::RADIX_SORT;
     }
+    
     else if (strcmp(argv, "counting-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -261,6 +296,7 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::COUNTING_SORT;
     }
+
     else if (strcmp(argv, "flash-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
@@ -268,7 +304,8 @@ void setAlgorithm(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithm
         else
             algorithmParam1 = SortingAlgorithm::FLASH_SORT;
     }
-     else if (strcmp(argv, "shaker-sort") == 0)
+
+    else if (strcmp(argv, "shaker-sort") == 0)
     {
         if (algorithmParam1 != SortingAlgorithm::NONE)
             algorithmParam2 = SortingAlgorithm::SHAKER_SORT;
@@ -283,10 +320,12 @@ void setOutputParameter(OutputParameter &outputParam, char *argv)
     {
         outputParam = OutputParameter::TIME;
     }
+
     else if (strcmp(argv, "-comp") == 0)
     {
         outputParam = OutputParameter::COMP;
     }
+
     else if (strcmp(argv, "-both") == 0)
     {
         outputParam = OutputParameter::BOTH;
@@ -299,14 +338,17 @@ void setInputOrder(InputOrder &inputOrderParam, char *argv)
     {
         inputOrderParam = InputOrder::RAND;
     }
+
     else if (strcmp(argv, "-nsorted") == 0)
     {
         inputOrderParam = InputOrder::NSORTED;
     }
+
     else if (strcmp(argv, "-sorted") == 0)
     {
         inputOrderParam = InputOrder::SORTED;
     }
+
     else if (strcmp(argv, "-rev") == 0)
     {
         inputOrderParam = InputOrder::REV;
@@ -316,11 +358,13 @@ void setInputOrder(InputOrder &inputOrderParam, char *argv)
 int* readFile(const std::string &fileName, int &size)
 {
     std::ifstream file(fileName);
+
     if (!file.is_open())
     {
         std::cout << "File not found" << std::endl;
         exit(-1);
     }
+
     std::vector<int> v;
     file >> size;
     for (int i = 0; i < size; i++) {
@@ -350,39 +394,46 @@ void setData(const std::string &fileName, InputOrder inputOrderParam, int size, 
     }
     switch (inputOrderParam)
     {
-    case InputOrder::RAND:
-        randomData = GenerateRandomData(size);
-        break;
-    case InputOrder::NSORTED:
-        nsortedData = GenerateNearlySortedData(size);
-        break;
-    case InputOrder::SORTED:
-        sortedData = GenerateSortedData(size);
-        break;
-    case InputOrder::REV:
-        revData = GenerateReverseData(size);
-        break;
+        case InputOrder::RAND:
+            randomData = GenerateRandomData(size);
+            break;
 
-    case InputOrder::NONE:
-        // do all
-        randomData = GenerateRandomData(size);
-        nsortedData = GenerateNearlySortedData(size);
-        sortedData = GenerateSortedData(size);
-        revData = GenerateReverseData(size);
-        break;
+        case InputOrder::NSORTED:
+            nsortedData = GenerateNearlySortedData(size);
+            break;
+
+        case InputOrder::SORTED:
+            sortedData = GenerateSortedData(size);
+            break;
+
+        case InputOrder::REV:
+            revData = GenerateReverseData(size);
+            break;
+
+        case InputOrder::NONE:
+            // do all
+            randomData = GenerateRandomData(size);
+            nsortedData = GenerateNearlySortedData(size);
+            sortedData = GenerateSortedData(size);
+            revData = GenerateReverseData(size);
+            break;
     }
 }
 void writeFile(const std::string &fileName, int *data, int size)
 {
     std::ofstream file(fileName);
+    
     if (!file.is_open()) {
         std::cout << "Could not open file for writing" << std::endl;
         return;
     }
+    
     file << size << std::endl;
+    
     for (int i = 0; i < size; ++i) {
         file << data[i] << " ";
     }
+    
     file << std::endl;
     file.close();
 }
