@@ -11,6 +11,11 @@ ControllerAlgorithmMode::ControllerAlgorithmMode(int argc, char *argv[])
     if (isDigit(argv[3]))
     {
         this->size = atoi(argv[3]);
+        if (size == 0) 
+        {
+            cout << "size cannot be 0" << endl;
+            exit(-1);
+        }
     }
     else
     {

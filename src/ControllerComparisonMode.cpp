@@ -12,6 +12,11 @@ ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
     if (isDigit(argv[4]))
     {
         this->size = atoi(argv[4]);
+        if (size == 0) 
+        {
+            cout << "size cannot be 0" << endl;
+            exit(-1);
+        }
     }
 
     else
