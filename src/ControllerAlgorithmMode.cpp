@@ -322,26 +322,26 @@ void ControllerAlgorithmMode::run()
     }
     if (randomData != nullptr)
     {
-        cout << "Input Order: Random Data" << endl;
+        cout << "Input Order: Randomize" << endl;
         cout << "------------------------------------" << endl;
         runSort(randomData, size);
     }
     if (nsortedData != nullptr)
     {
-        cout << "Input Order: Nearly Sorted Data" << endl;
+        cout << "Input Order: Nearly Sorted" << endl;
         
         cout << "------------------------------------" << endl;
         runSort(nsortedData, size);
     }
     if (sortedData != nullptr)
     {
-        cout << "Input Order: Sorted Data" << endl;
+        cout << "Input Order: Sorted" << endl;
         cout << "------------------------------------" << endl;
         runSort(sortedData, size);
     }
     if (revData != nullptr)
     {
-        cout << "Input Order: Reversed Data" << endl;
+        cout << "Input Order: Reversed" << endl;
         cout << "------------------------------------" << endl;
         runSort(revData, size);
     }
