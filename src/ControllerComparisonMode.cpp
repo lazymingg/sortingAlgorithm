@@ -347,7 +347,10 @@ void ControllerComparisonMode::run()
     cout << "Algorithm: " << sortingAlgorithmToString(this->algorithmParam1) << " | " << sortingAlgorithmToString(this->algorithmParam2) << endl;
     if (fileName != "") cout << "Input File: " << fileName << endl;
     cout << "Input size: " << this->size << endl;
-    cout << endl;
+    if (InputOrder::NONE == this->inputOrderParam)
+    {
+        cout << endl;
+    }
 
     if (fileName != "")
     {
