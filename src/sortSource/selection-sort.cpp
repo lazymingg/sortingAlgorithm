@@ -44,7 +44,7 @@ void SelectionSort::selectionSortComparionCount(int *arr, int n)
         int minIndex = i;
         for (int j = i + 1; ++this->comparison && j < n; j++)
         {
-            if (arr[j] < arr[minIndex])
+            if (++this->comparison && arr[j] < arr[minIndex])
             {
                 minIndex = j;
             }
