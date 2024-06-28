@@ -47,6 +47,7 @@ void BinaryInsertionSort::BinaryInsertionSortRunningTimeCount(int *arr, int n)
             arr[j + 1] = arr[j];
             j--;
         }
+        
         arr[j + 1] = selected;
     }
 }
@@ -77,6 +78,7 @@ void BinaryInsertionSort::BinaryInsertionSortComparisonCount(int *arr, int n)
             arr[j + 1] = arr[j];
             j--;
         }
+
         arr[j + 1] = selected;
     }
 }
