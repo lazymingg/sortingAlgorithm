@@ -313,10 +313,11 @@ void ControllerAlgorithmMode::run()
         cout << "Input File: " << fileName << endl;
     }
     cout << "Input Size: " << this->size << endl;
-    if (InputOrder::NONE == this->inputOrderParam)
+    if (InputOrder::NONE == this->inputOrderParam && fileName == "")
     {
         cout << endl;
     }
+
     if (fileName != "")
     {
         cout << "------------------------------------" << endl;
