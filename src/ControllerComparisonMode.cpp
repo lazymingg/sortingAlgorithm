@@ -315,6 +315,7 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam2, dataType, size) << endl;
+        cout << endl;
     }
 
     else if (outputParam == OutputParameter::COMP)
@@ -323,6 +324,7 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
+        cout << endl;
     }
 
     else if (outputParam == OutputParameter::BOTH || outputParam == OutputParameter::NONE)
@@ -335,52 +337,50 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
+        cout << endl;
     }
 }
 
 /*----------------------Run Function----------------------*/
 void ControllerComparisonMode::run()
 {
-    /////////====================================////////////
-    cout << "=============Parameters:=============" << endl;
     cout << "Algorithm: " << sortingAlgorithmToString(this->algorithmParam1) << " | " << sortingAlgorithmToString(this->algorithmParam2) << endl;
     if (fileName != "") cout << "Input File: " << fileName << endl;
     cout << "Input size: " << this->size << endl;
-    cout << "=====================================" << endl;
+    cout << endl;
 
     if (fileName != "")
     {
         cout << "------------------------------------" << endl;
         runSort(fileData, size);
-        cout << endl;
     }
 
     if (randomData != nullptr)
     {
         cout << "Input Order: Random Data" << endl;
-        runSort(randomData, size);
         cout << "------------------------------------" << endl;
+        runSort(randomData, size);
     }
 
     if (nsortedData != nullptr)
     {
         cout << "Input Order: Nearly Sorted Data" << endl;
-        runSort(nsortedData, size);
         cout << "------------------------------------" << endl;
+        runSort(nsortedData, size);
     }
 
     if (sortedData != nullptr)
     {
         cout << "Input Order: Sorted Data" << endl;
-        runSort(sortedData, size);
         cout << "------------------------------------" << endl;
+        runSort(sortedData, size);
     }
 
     if (revData != nullptr)
     {
         cout << "Input Order: Reversed Data" << endl;
-        runSort(revData, size);
         cout << "------------------------------------" << endl;
+        runSort(revData, size);
     }
 
     writingFile();
