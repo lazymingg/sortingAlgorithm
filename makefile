@@ -12,7 +12,7 @@ SRC_SORT_DIR = src/sortSource
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_SORT_DIR)/*.cpp)
 
 # Output executable
-TARGET = main
+TARGET = 01
 
 # Build rule
 $(TARGET): $(SRC_FILES)
