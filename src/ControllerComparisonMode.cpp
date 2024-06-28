@@ -12,6 +12,11 @@ ControllerComparisonMode::ControllerComparisonMode(int argc, char *argv[])
     if (isDigit(argv[4]))
     {
         this->size = atoi(argv[4]);
+        if (size == 0) 
+        {
+            cout << "size cannot be 0" << endl;
+            exit(-1);
+        }
     }
 
     else
@@ -307,36 +312,28 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
     if (outputParam == OutputParameter::TIME)
     {
         cout << "Running Time : ";
-        cout << sortingAlgorithmToString(this->algorithmParam1) << " " ;
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size);
         cout << " | "; 
-        cout << sortingAlgorithmToString(this->algorithmParam2) << " ";
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam2, dataType, size) << endl;
     }
 
     else if (outputParam == OutputParameter::COMP)
     {
         cout << "Comparisons : ";
-        cout << sortingAlgorithmToString(this->algorithmParam1) << " " ;
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
-        cout << sortingAlgorithmToString(this->algorithmParam2) << " ";
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
     }
 
     else if (outputParam == OutputParameter::BOTH || outputParam == OutputParameter::NONE)
     {
         cout << "Running Time : ";
-        cout << sortingAlgorithmToString(this->algorithmParam1) << " " ;
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size);
         cout << " | "; 
-        cout << sortingAlgorithmToString(this->algorithmParam2) << " ";
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam2, dataType, size) << endl;
         cout << "Comparisons : ";
-        cout << sortingAlgorithmToString(this->algorithmParam1) << " " ;
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
-        cout << sortingAlgorithmToString(this->algorithmParam2) << " ";
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
     }
 }
@@ -346,8 +343,7 @@ void ControllerComparisonMode::run()
 {
     /////////====================================////////////////
     cout << "=============Parameters:=============" << endl;
-    cout << "Algorithm 1: " << sortingAlgorithmToString(this->algorithmParam1) << endl;
-    cout << "Algorithm 2: " << sortingAlgorithmToString(this->algorithmParam2) << endl;
+    cout << "Algorithm: " << sortingAlgorithmToString(this->algorithmParam1) << " | " << sortingAlgorithmToString(this->algorithmParam2) << endl;
     cout << "Input Order: " << inputOrderToString(this->inputOrderParam) << endl;
     cout << "Output Parameter: " << outputParameterToString(this->outputParam) << endl;
     cout << "Size: " << this->size << endl;

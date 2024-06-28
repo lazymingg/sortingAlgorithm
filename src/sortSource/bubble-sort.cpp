@@ -41,7 +41,7 @@ void BubbleSort::BubbleSortComparisonCount(int *arr, int n)
     {
         for (int j = 0; ++this->comparison && j < n - i - 1; j++)
         {
-            if (arr[j] > arr[j + 1])
+            if (++this->comparison && arr[j] > arr[j + 1])
             {
                 swap(arr[j], arr[j + 1]);
             }

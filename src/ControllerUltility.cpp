@@ -135,7 +135,10 @@ void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algor
         printPrototypes();
         exit(-1);
     }
-
+    if (fileName == "" && size == 0)
+    {
+        printPrototypes();
+    }
     if (outputParam == OutputParameter::NONE)
     {
         printPrototypes();
@@ -149,7 +152,10 @@ void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingA
         printPrototypes();
         exit(-1);
     }
-
+    if (fileName == "" && size == 0)
+    {
+        printPrototypes();
+    }
     if (inputOrderParam == InputOrder::NONE && fileName == "" && size == 0)
     {
         printPrototypes();
