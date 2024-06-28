@@ -341,18 +341,15 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
 /*----------------------Run Function----------------------*/
 void ControllerComparisonMode::run()
 {
-    /////////====================================////////////////
+    /////////====================================////////////
     cout << "=============Parameters:=============" << endl;
     cout << "Algorithm: " << sortingAlgorithmToString(this->algorithmParam1) << " | " << sortingAlgorithmToString(this->algorithmParam2) << endl;
-    cout << "Input Order: " << inputOrderToString(this->inputOrderParam) << endl;
-    cout << "Output Parameter: " << outputParameterToString(this->outputParam) << endl;
-    cout << "Size: " << this->size << endl;
+    if (fileName != "") cout << "Input File: " << fileName << endl;
+    cout << "Input size: " << this->size << endl;
     cout << "=====================================" << endl;
 
     if (fileName != "")
     {
-        cout << "Input File: " << fileName << endl;
-        cout << "size: " << size << endl;
         cout << "------------------------------------" << endl;
         runSort(fileData, size);
         cout << endl;
@@ -360,28 +357,28 @@ void ControllerComparisonMode::run()
 
     if (randomData != nullptr)
     {
-        cout << "Random Data: " << endl;
+        cout << "Input Order: Random Data" << endl;
         runSort(randomData, size);
         cout << "------------------------------------" << endl;
     }
 
     if (nsortedData != nullptr)
     {
-        cout << "Nearly Sorted Data: " << endl;
+        cout << "Input Order: Nearly Sorted Data" << endl;
         runSort(nsortedData, size);
         cout << "------------------------------------" << endl;
     }
 
     if (sortedData != nullptr)
     {
-        cout << "Sorted Data: " << endl;
+        cout << "Input Order: Sorted Data" << endl;
         runSort(sortedData, size);
         cout << "------------------------------------" << endl;
     }
 
     if (revData != nullptr)
     {
-        cout << "Reverse Data: " << endl;
+        cout << "Input Order: Reversed Data" << endl;
         runSort(revData, size);
         cout << "------------------------------------" << endl;
     }

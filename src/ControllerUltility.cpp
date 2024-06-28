@@ -143,7 +143,7 @@ void handleParameters(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algor
 }
 void handleParametersCommparisonMode(SortingAlgorithm &algorithmParam1, SortingAlgorithm &algorithmParam2, InputOrder &inputOrderParam, OutputParameter &outputParam, string &fileName, int &size, char* argv[])
 {
-    if (algorithmParam1 == SortingAlgorithm::NONE)
+    if (algorithmParam1 == SortingAlgorithm::NONE || algorithmParam2 == SortingAlgorithm::NONE)
     {
         printPrototypes();
         exit(-1);
