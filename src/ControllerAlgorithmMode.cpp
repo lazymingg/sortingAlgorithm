@@ -364,7 +364,6 @@ void ControllerAlgorithmMode::writingFile()
     // case command 1 and 2
     if (InputOrder::NONE != this->inputOrderParam || fileName != "")
     {
-        cout << "Writing to output.txt" << endl;
         writeFile("output.txt", result, size);
     }
     // input of command  2 and 3
