@@ -311,7 +311,7 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
 {
     if (outputParam == OutputParameter::TIME)
     {
-        cout << "Running Time : ";
+        cout << "Running Time: ";
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam2, dataType, size) << endl;
@@ -319,7 +319,7 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
 
     else if (outputParam == OutputParameter::COMP)
     {
-        cout << "Comparisons : ";
+        cout << "Comparisons: ";
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;
@@ -327,11 +327,11 @@ void ControllerComparisonMode::runSort(int *dataType, int size)
 
     else if (outputParam == OutputParameter::BOTH || outputParam == OutputParameter::NONE)
     {
-        cout << "Running Time : ";
+        cout << "Running Time: ";
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmRunnningTime(this->algorithmParam2, dataType, size) << endl;
-        cout << "Comparisons : ";
+        cout << "Comparisons: ";
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size);
         cout << " | "; 
         cout << ControllerComparisonMode::getAlgorithmComparisons(this->algorithmParam2, dataType, size) << endl;

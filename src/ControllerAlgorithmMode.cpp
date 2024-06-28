@@ -285,19 +285,19 @@ void ControllerAlgorithmMode::runSort(int *dataType, int size)
 {
     if (outputParam == OutputParameter::TIME)
     {
-        cout << "Running Time : ";
+        cout << "Running Time: ";
         cout << ControllerAlgorithmMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size) << endl;
     }
     else if (outputParam == OutputParameter::COMP)
     {
-        cout << "Comparisons : ";
+        cout << "Comparisons: ";
         cout << ControllerAlgorithmMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size) << endl;
     }
     else if (outputParam == OutputParameter::BOTH)
     {
-        cout << "Running Time : ";
+        cout << "Running Time: ";
         cout << ControllerAlgorithmMode::getAlgorithmRunnningTime(this->algorithmParam1, dataType, size) << endl;
-        cout << "Comparisons : ";
+        cout << "Comparisons: ";
         cout << ControllerAlgorithmMode::getAlgorithmComparisons(this->algorithmParam1, dataType, size) << endl;
     }
 }
